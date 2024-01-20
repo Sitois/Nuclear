@@ -41,3 +41,9 @@ Rendez-vous dans le fichier ```config_selfbot.py```, entrez un token __humain__,
 ## 🟢| Statut du Projet:
 🟢| Project is maintened !
 🟢| Le projet est maintenu à jour !
+
+
+## 🫂| Comment contribuer au Projet:
+🌟 N'oubliez pas de laisser une étoile !
+
+🌟 Don't forget to leave a star !
