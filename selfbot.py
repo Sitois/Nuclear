@@ -391,7 +391,7 @@ async def use(ctx):
                               activity=selfcord.Activity.Stream(name="click mee", 
                                                                 details="Nuclear $B", 
                                                                 state="Free $B",
-                                                                buttons={"Nuclear $B": "https://github.com/Sitois/Nuclear", "Here !": "https://github.com/Sitois/Nuclear"},
+                                                                buttons={"Nuclear $B": "https://github.com/Sitois/Nuclear", "Star it !": "https://github.com/Sitois/Nuclear"},
                                                                 key="mp:attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless",
                                                                 application_id=application_id,
                                                                 url=streaming_url
