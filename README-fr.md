@@ -1,6 +1,7 @@
 [![Version anglaise](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README.md)
 
 [![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
+[![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/releases)
 [![GitHub downloads](https://img.shields.io/github/downloads/Sitois/Nuclear/total.svg)](https://github.com/Sitois/Nuclear/releases)
 [![GitHub stars](https://img.shields.io/github/stars/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/stargazers)
