@@ -377,7 +377,7 @@ async def use(ctx):
                               activity=selfcord.Activity.Game(name="WebDeck", 
                                                                 details="Watching stars on GitHub...", 
                                                                 state="Playing with Free StreamDeck.",
-                                                                buttons={"Webdeck's GiHub (star it)": "https://github.com/LeLenoch/WebDeck", "WebDeck's Discord server": "https://discord.com/invite/CK2mu4P"},
+                                                                buttons={"Webdeck's GitHub (star it)": "https://github.com/LeLenoch/WebDeck", "WebDeck's Discord server": "https://discord.com/invite/CK2mu4P"},
                                                                 key="mp:attachments/1135264530188992562/1197999417853218927/jj0PYp2.png?ex=65bd4ee6&is=65aad9e6&hm=ef2a47c5023678209436c74e3067469cf5c28143e5c12a3f714746fd03f1321e&=&format=webp&quality=lossless",
                                                                 application_id=application_id
                                                                 )
