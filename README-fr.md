@@ -43,14 +43,12 @@ Rendez-vous dans le fichier ```config_selfbot.py```, entrez un token __humain__,
 * Et d'autres, voir Help command
 
 ## 🟢| Statut du Projet:
-🟢| Project is maintened !
 🟢| Le projet est maintenu à jour !
 
 
 ## 🫂| Comment contribuer au Projet:
 🌟 N'oubliez pas de laisser une étoile !
 
-🌟 Don't forget to leave a star !
 
 # Support:
 [Guilded](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
