@@ -45,3 +45,6 @@ Go to ```config_selfbot.py```, Enter a __human__ token. Launch ```selfbot.py```.
 
 ## 🫂| How to contribute:
 🌟 Don't forget to leave a star !
+
+# Support:
+[Guilded](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
