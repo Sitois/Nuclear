@@ -432,7 +432,7 @@ async def use(ctx):
     else:
         msg = await ctx.message.edit("❌ Choix incorrect !")
         await asyncio.sleep(deltime)
-        msg.delete()
+        await msg.delete()
 
 
 
