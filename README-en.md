@@ -1,4 +1,4 @@
-[![Version anglaise](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/master/README-en.md)
+[![Version anglaise](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/master/README.md)
 
 [![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/releases)
