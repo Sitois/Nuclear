@@ -292,7 +292,7 @@ async def presence(ctx):
  `{config_selfbot.prefix}rpc_button_text_two`: Set RPC's second button text.
  `{config_selfbot.prefix}rpc_button_link_two`: Set RPC's second button link.
 📖| __**Templates:**__
- `{config_selfbot.prefix}use`: "reset" / "hi" / "webdeck" / "omori" / "youtube" / "car" / "self"''')
+ `{config_selfbot.prefix}use`: "reset" / "hi" / "webdeck" / "omori" / "youtube" / "car" / "self" / "dark"''')
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -369,6 +369,20 @@ async def use(ctx):
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🏎️ Template \"Car\" séléctionnée.")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "dark":
+     await bot.change_presence(status=config_selfbot.status_activity, 
+                              afk=config_selfbot.afk, 
+                              activity=selfcord.Activity.Game(name="to a game.", 
+                                                                details="Life.", 
+                                                                state=None,
+                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
+                                                                key="mp:attachments/1135264530188992562/1198250065970606210/0RoaYys.gif?ex=65be3856&is=65abc356&hm=39b3c558a1adb1b03ffa16c2ad8ff5b7ae7afedb3539db772fc0ee26c504fc8f&=",
+                                                                application_id=application_id,
+                                                                )
+                                                                )
+     msg = await ctx.message.edit(f"🖤 Template \"Dark\" séléctionnée.")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "webdeck":
