@@ -37,8 +37,10 @@ Launch ```selfbot.py```. Necessary modules will be downloaded automatically on s
 ## 🔧| Config
 Go to ```config_selfbot.py```, Enter a __human__ token. Launch ```selfbot.py```.
 
-## 🌟| Content:
-* See Help command.
+## 🌟| Features:
+* Custom RPC
+* Voice
+* And others, check Help command.
 
 ## 🟢| Project Status:
 🟢| Project is maintened !

@@ -38,7 +38,9 @@ Lancer ```selfbot.py```.  Les modules nécessaires se téléchargeront automatiq
 Rendez-vous dans le fichier ```config_selfbot.py```, entrez un token __humain__, configurez le reste. Lancez ```selfbot.py```.
 
 ## 🌟| Contenu:
-* Voir dans le Help.
+* RPC personnalisé / RPC Templates
+* Commandes Vocal
+* Et d'autres, voir Help command
 
 ## 🟢| Statut du Projet:
 🟢| Project is maintened !
