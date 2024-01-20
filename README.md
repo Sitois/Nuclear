@@ -38,7 +38,7 @@ Launch ```selfbot.py```. Necessary modules will be downloaded automatically on s
 Go to ```config_selfbot.py```, Enter a __human__ token. Launch ```selfbot.py```.
 
 ## 🌟| Features:
-* Custom RPC
+* Custom RPC / RPC Template
 * Voice
 * And others, check Help command.
 
