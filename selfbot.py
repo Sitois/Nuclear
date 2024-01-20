@@ -292,7 +292,7 @@ async def presence(ctx):
  `{config_selfbot.prefix}rpc_button_text_two`: Set RPC's second button text.
  `{config_selfbot.prefix}rpc_button_link_two`: Set RPC's second button link.
 📖| __**Templates:**__
- `{config_selfbot.prefix}use`: "reset" / "hi" / "webdeck" / "omori" / "youtube" / "car"''')
+ `{config_selfbot.prefix}use`: "reset" / "hi" / "webdeck" / "omori" / "youtube" / "car" / "self"''')
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -383,6 +383,21 @@ async def use(ctx):
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"📱 Template \"WebDeck\" séléctionnée.")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "self":
+     await bot.change_presence(status=config_selfbot.status_activity, 
+                              afk=config_selfbot.afk, 
+                              activity=selfcord.Activity.Stream(name="click mee", 
+                                                                details="Nuclear $B", 
+                                                                state="Free $B",
+                                                                buttons={"Nuclear $B": "https://github.com/Sitois/Nuclear", "Here !": "https://github.com/Sitois/Nuclear"},
+                                                                key="mp:attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless",
+                                                                application_id=application_id,
+                                                                url=streaming_url
+                                                                )
+                                                                )
+     msg = await ctx.message.edit(f"🌌 Template \"Nuclear\" séléctionnée.")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "reset":
