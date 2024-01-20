@@ -30,7 +30,7 @@
 
 ## 💾| Installation
 Téléchargez la dernière version de Necluar.
-Lancer ```main.py```.  Les modules nécessaires se téléchargeront automatiquement au démarrage s'il ne sont pas présent.
+Lancer ```selfbot.py```.  Les modules nécessaires se téléchargeront automatiquement au démarrage s'il ne sont pas présent.
 
 ## 🔧| Configuration
 Rendez-vous dans le fichier ```config_selfbot.py```, entrez un token __humain__, configurez le reste. Lancez ```main.py```.
