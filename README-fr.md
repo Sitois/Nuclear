@@ -3,10 +3,7 @@
 
 [![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
 [![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/releases)
-[![GitHub downloads](https://img.shields.io/github/downloads/Sitois/Nuclear/total.svg)](https://github.com/Sitois/Nuclear/releases)
-[![GitHub stars](https://img.shields.io/github/stars/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/stargazers)
-[![GitHub watchers](https://img.shields.io/github/watchers/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/watchers)
+
 # 🌌| Nuclear
 ### Un incroyable SelfBot !
 
@@ -20,6 +17,7 @@
   [![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge?style=flat)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
   [![Problèmes GitHub](https://img.shields.io/github/issues/Sitois/Nuclear.svg?style=flat)](https://github.com/Sitois/Nuclear/issues)
   [![Support](https://shields.yoki-labs.xyz/shields/i/kKlAODLp?style=flat)](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
+  [![Support](https://shields.yoki-labs.xyz/shields/i/2ZnwPj62p?style=flat)](https://www.guilded.gg/i/2ZnwPj62?cid=c7d78c47-5231-47fa-b388-e11d41360e2a&intent=chat)
 </div>
 
 ## ⛔ Avertissement
