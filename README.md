@@ -1,9 +1,5 @@
 [![Version française](https://img.shields.io/badge/Lire%20en-Fran%C3%A7ais-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README-fr.md)
 
-
-# 🌌 Nuclear
-A powerful Discord SelfBot written in Python!
-
 [![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
 [![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/releases)
