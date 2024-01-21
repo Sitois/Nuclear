@@ -157,7 +157,8 @@ async def general(ctx):
  `{config_selfbot.prefix}nitrosniper`: Toggle NitroSniper.
  `{config_selfbot.prefix}flood`: Flood.
  `{config_selfbot.prefix}bio`: Change account's bio.
- `{config_selfbot.prefix}temp`: Delete message after 1 second.""")
+ `{config_selfbot.prefix}temp`: Delete message after 1 second.
+ `{config_selfbot.prefix}spam`: Spam. (DON'T SPAM TOO MUCH or your account will get banned.) ({config_selfbot.prefix}spam 15 hiii guys)""")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -261,9 +262,13 @@ async def ping(ctx):
 @bot.cmd(description="chiant")
 async def spam(ctx):
     message_split = ctx.message.content.split()
-    content = ctx.message.content.replace(f"{message_split[0]} ", "")
-    for i in range(int(ctx.message.content.split()[1])):
+    content = ctx.message.content.replace(f"{message_split[0]} {message_split[1]} ", "")
+
+    await ctx.message.edit(content)
+
+    for i in range(int(message_split[1]) - 1):
       await ctx.channel.send(content)
+      await asyncio.sleep(0.5)
 
 
 
