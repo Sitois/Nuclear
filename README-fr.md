@@ -1,3 +1,7 @@
+
+# 🌌 Nuclear
+Un puissant SelfBot Discord écrit en Python !
+
 [![Version anglaise](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README.md)
 
 [![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
@@ -8,48 +12,42 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/watchers)
 # 🌌| Nuclear
 ### Un incroyable SelfBot !
+
 <div align="center">
-  <img src="https://media.discordapp.net/attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless" alt="icon" width="" height="">
+  <img src="https://media.discordapp.net/attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless" alt="icône" width="50%" height="50%">
+
+  [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sitois/Nuclear.svg?style=flat)](https://github.com/Sitois/Nuclear/releases)
+  [![Téléchargements GitHub](https://img.shields.io/github/downloads/Sitois/Nuclear/total.svg?style=flat)](https://github.com/Sitois/Nuclear/releases)
+  [![Étoiles GitHub](https://img.shields.io/github/stars/Sitois/Nuclear.svg?style=flat)](https://github.com/Sitois/Nuclear/stargazers)
+  [![Observateurs GitHub](https://img.shields.io/github/watchers/Sitois/Nuclear.svg?style=flat)](https://github.com/Sitois/Nuclear/watchers)
+  [![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge?style=flat)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
+  [![Problèmes GitHub](https://img.shields.io/github/issues/Sitois/Nuclear.svg?style=flat)](https://github.com/Sitois/Nuclear/issues)
+  [![Support](https://shields.yoki-labs.xyz/shields/i/kKlAODLp?style=flat)](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
 </div>
 
-## 📒| Table des matières
+## ⛔ Avertissement
+**Les SelfBots ne sont pas autorisés par les CGU (ou TOS) de Discord et peuvent facilement entraîner le banissement de votre compte. Veuillez utiliser ce script uniquement à des fins éducatives.**
 
-1. [⛔| Disclaimer](#⛔-disclaimer)
+## 💾 Installation
 
-2. [💾| Installation](#💾-installation)
+1. Téléchargez la dernière version depuis la section [Releases](https://github.com/Sitois/Nuclear/releases) sur GitHub.
+2. Assurez-vous d'avoir [Python](https://www.python.org/downloads/ "Installez Python ici") installé.
+3. Installez les dépendances : `pip install -r requirements.txt`
+4. Exécutez le programme : `python selfbot.py`
 
-3. [🔧| Configuration](#🔧-configuration)
+## 🔧 Configuration
+Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un token d'__utilisateur__.
 
-4. [🌟| Contenu](#🌟-contenu)
+## 🌟 Fonctionnalités :
+* Templates RPC personnalisés
+* Salon vocaux
+* Et bien d'autres, consultez la commande `Help` !
 
-5. [🟢| Statut du Projet](#🟢-statut-du-projet)
+# Support
+- Serveur Guilded : [https://www.guilded.gg/i/kKlAODLp](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
 
-6. [🫂| Contribuer au Projet](#🫂-comment-contribuer-au-projet)
+<br>
 
-## ⛔| Disclaimer
-```en:``` **Discord SelfBot are not allowed by Discord and can easily ban your account. Please use for educationnal purpose only.**
+---
 
-```fr:``` **Utiliser un SelfBot Discord n'est pas autorisé par Discord et peux facilement bannir votre compte. Merci de l'utiliser seulement pour des raisons éducatives.**
-
-## 💾| Installation
-Téléchargez la dernière version de Necluar.
-Lancer ```selfbot.py```.  Les modules nécessaires se téléchargeront automatiquement au démarrage s'il ne sont pas présent.
-
-## 🔧| Configuration
-Rendez-vous dans le fichier ```config_selfbot.py```, entrez un token __humain__, configurez le reste. Lancez ```selfbot.py```.
-
-## 🌟| Contenu:
-* RPC personnalisé / RPC Templates
-* Commandes Vocal
-* Et d'autres, voir Help command
-
-## 🟢| Statut du Projet:
-🟢| Le projet est maintenu à jour !
-
-
-## 🫂| Comment contribuer au Projet:
-🌟 N'oubliez pas de laisser une étoile !
-
-
-# Support:
-[Guilded](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
+[![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg?style=flat)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
