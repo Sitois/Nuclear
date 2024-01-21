@@ -292,7 +292,7 @@ async def presence(ctx):
  `{config_selfbot.prefix}rpc_button_text_two`: Set RPC's second button text.
  `{config_selfbot.prefix}rpc_button_link_two`: Set RPC's second button link.
 📖| __**Templates:**__
- `{config_selfbot.prefix}use`: "reset" / "hi" / "webdeck" / "omori" / "youtube" / "car" / "self" / "dark" / "python"''')
+ `{config_selfbot.prefix}use`: "reset" / "hi" / "webdeck" / "omori" / "youtube" / "car" / "self" / "dark" / "python" / "js"''')
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -383,6 +383,20 @@ async def use(ctx):
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"👨‍💻 Template \"Python\" séléctionnée.")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "js":
+     await bot.change_presence(status=config_selfbot.status_activity, 
+                              afk=config_selfbot.afk, 
+                              activity=selfcord.Activity.Game(name="Visual Studio Code", 
+                                                                details=f"Editing {bot.user.name}.js (273 lines)", 
+                                                                state="Workspace: Nuclear",
+                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                key="mp:attachments/1135264530188992562/1198623222678179960/FYcrOR1.png?ex=65bf93dd&is=65ad1edd&hm=196ea799818a84abed3db5089be49eb2f470fe31e9ed5d984bfb6b898c868a4a&=&format=webp&quality=lossless",
+                                                                application_id=application_id
+                                                                )
+                                                                )
+     msg = await ctx.message.edit(f"👨‍💻 Template \"JavaScript\" séléctionnée.")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "dark":
