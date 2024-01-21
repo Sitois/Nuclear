@@ -1,11 +1,8 @@
+[![English version](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README.md)
 
-[![Version anglaise](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README.md)
 
-[![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
-[![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
-
-# 🌌| Nuclear
-### Un incroyable SelfBot !
+# 🌌 Nuclear
+### Un puissant SelfBot Discord écrit en Python !
 
 <div align="center">
   <img src="https://media.discordapp.net/attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless" alt="icône" width="50%" height="50%">
@@ -32,25 +29,25 @@
 ## 🔧 Configuration
 Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un token d'__utilisateur__.
 
-## 🌟 Fonctionnalités :
+## 🌟 Fonctionnalités
 * Templates RPC personnalisés,
 * Commandes vocal,
 * Nitro Sniper,
 * Et bien d'autres, consultez la commande `Help` !
 
-## 🫂 Contributrice:
+## ⭐ Contributeurs
 <table align="center">
   <tr>
     <td align="center">
       <a href="https://twitter.com/LenochJ">
-        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="LeLenoch" width="80px" height="80px" style="border-radius: 50%;">
+        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="Lenoch" width="80px" height="80px" style="border-radius: 50%;">
         <br>
-        LeLenoch
+        Lenoch
       </a>
     </td>
 <table>
 
-## Un grand merci à elle !
+Un grand merci à elle !
 
 # Support
 - Serveur Guilded : [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
