@@ -49,6 +49,8 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
     </td>
 <table>
 
+## A big thank to her !
+
 # Support
 - Serveur Guilded : [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
 

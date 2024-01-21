@@ -50,6 +50,8 @@ Open `config_selfbot.py` with any text editor and make sure to enter a __user__ 
     </td>
 <table>
 
+## A big thank to her !
+
 
 
 # Support
