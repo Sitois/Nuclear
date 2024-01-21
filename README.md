@@ -40,7 +40,7 @@ Open `config_selfbot.py` with any text editor and make sure to enter a __user__ 
 * And others, check the `Help` command!
 
 # Support
-- Guilded server: [https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat](https://guilded.gg/nuclear)
+- Guilded server: [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
 
 <br>
 
