@@ -195,7 +195,7 @@ async def leavevc(ctx):
 async def bypass(ctx):
     content = ctx.message.content.split()[1]
     msg = await ctx.message.edit(f"# discord.gg/{content} ON TOP")
-    await  asyncio.sleep(120)
+    await asyncio.sleep(120)
     await msg.delete()
 
 @bot.cmd(description="Snipe (all servers).")
