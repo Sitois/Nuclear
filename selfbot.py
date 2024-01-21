@@ -895,4 +895,7 @@ _ _
 _ _
 _ _""")
 
-bot.run(token)
+try:
+    bot.run(token)
+except:
+    print(Fore.RED,  "[!!!]", Fore.LIGHTRED_EX, "Bad Token !")
