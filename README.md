@@ -34,8 +34,9 @@
 Open `config_selfbot.py` with any text editor and make sure to enter a __user__ token.
 
 ## 🌟 Features:
-* Custom RPC templates
-* Voice
+* Custom RPC templates,
+* Voice commands,
+* Nitro Sniper,
 * And others, check the `Help` command!
 
 ## 🫂 Contributors:
