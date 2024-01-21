@@ -3,7 +3,7 @@
 
 
 
-[![GitHub watchers](https://img.shields.io/github/watchers/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/watchers)
+
 # 🌌| Nuclear
 ### A wonderful and powerful Discord SelfBot !
 
