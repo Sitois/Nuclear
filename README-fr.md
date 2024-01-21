@@ -37,7 +37,7 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
 
 ## 🌟 Fonctionnalités :
 * Templates RPC personnalisés
-* Salon vocaux
+* Commandes vocal
 * Et bien d'autres, consultez la commande `Help` !
 
 # Support
