@@ -17,7 +17,7 @@
   [![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge?style=flat)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
   [![Problèmes GitHub](https://img.shields.io/github/issues/Sitois/Nuclear.svg?style=flat)](https://github.com/Sitois/Nuclear/issues)
   [![Support](https://shields.yoki-labs.xyz/shields/i/kKlAODLp?style=flat)](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
-  [![Support](https://shields.yoki-labs.xyz/shields/i/2ZnwPj62p?style=flat)](https://www.guilded.gg/i/2ZnwPj62?cid=c7d78c47-5231-47fa-b388-e11d41360e2a&intent=chat)
+  [![Support](https://shields.yoki-labs.xyz/shields/i/kQj8PmAp?style=flat)](https://www.guilded.gg/i/kQj8PmAp?cid=c7d78c47-5231-47fa-b388-e11d41360e2a&intent=chat)
 </div>
 
 ## ⛔ Avertissement
