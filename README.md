@@ -39,6 +39,20 @@ Open `config_selfbot.py` with any text editor and make sure to enter a __user__ 
 * Voice
 * And others, check the `Help` command!
 
+## 🫂 Contributors:
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://twitter.com/LenochJ">
+        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="LeLenoch" width="80px" height="80px" style="border-radius: 50%;">
+        <br>
+        LeLenoch
+      </a>
+    </td>
+<table>
+
+
+
 # Support
 - Guilded server: [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
 
