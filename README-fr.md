@@ -1,5 +1,18 @@
+
 # 🌌 Nuclear
 Un puissant SelfBot Discord écrit en Python !
+
+[![Version anglaise](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README.md)
+
+[![wakatime](https://wakatime.com/badge/user/018af69f-9d50-4699-932d-026a9efb0401.svg)](https://wakatime.com/@018af69f-9d50-4699-932d-026a9efb0401)
+[![CodeFactor](https://www.codefactor.io/repository/github/Sitois/Nuclear/badge)](https://www.codefactor.io/repository/github/Sitois/Nuclear)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/releases)
+[![GitHub downloads](https://img.shields.io/github/downloads/Sitois/Nuclear/total.svg)](https://github.com/Sitois/Nuclear/releases)
+[![GitHub stars](https://img.shields.io/github/stars/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/Sitois/Nuclear.svg)](https://github.com/Sitois/Nuclear/watchers)
+# 🌌| Nuclear
+### Un incroyable SelfBot !
+
 <div align="center">
   <img src="https://media.discordapp.net/attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless" alt="icône" width="50%" height="50%">
 
