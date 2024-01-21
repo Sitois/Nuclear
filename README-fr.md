@@ -41,7 +41,7 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
 * Et bien d'autres, consultez la commande `Help` !
 
 # Support
-- Serveur Guilded : [https://www.guilded.gg/i/kKlAODLp](https://www.guilded.gg/i/kKlAODLp?cid=a564bba2-9d24-4ae6-9861-d4921b9b72fa&intent=chat)
+- Serveur Guilded : [https://www.guilded.gg/i/kKlAODLp](https://guilded.gg/nuclear)
 
 <br>
 
