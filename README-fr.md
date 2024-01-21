@@ -49,7 +49,7 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
     </td>
 <table>
 
-## A big thank to her !
+## Un grand merci à elle !
 
 # Support
 - Serveur Guilded : [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
