@@ -930,5 +930,5 @@ _ _""")
 
 try:
     bot.run(token)
-except Exception:
+except Exception as e:
     print(Fore.RED, "[!!!]", Fore.LIGHTRED_EX, "Bad Token !")
