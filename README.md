@@ -34,6 +34,14 @@ Open `config_selfbot.py` with any text editor and make sure to enter a __user__ 
 * Nitro Sniper,
 * And others, check the `Help` command!
 
+
+## ☣️ Issues
+Yes, the SelfBot can disconnect withouth reason, yes the SelfBot can display random errors: the problem is the current library (selfcord.py)
+**But**, the creator is currently working in a rewrite where all of these issues will be fixed.
+Be patient and wait for the cretaor of selfcord.py to finish the rewrite.
+As soon as the new rewrite come out, Nuclear will migrate to this version.
+
+
 ## ⭐ Contributors
 <table align="center">
   <tr>
