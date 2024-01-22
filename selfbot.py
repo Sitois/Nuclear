@@ -435,13 +435,12 @@ async def use(ctx):
     elif choice.lower() == "cod":
      await bot.change_presence(status=config_selfbot.status_activity, 
                               afk=config_selfbot.afk, 
-                              activity=selfcord.Activity.Stream(name="Call Of Duty: MWIII", 
+                              activity=selfcord.Activity.Game(name="Call Of Duty: MWIII", 
                                                                 details="En attente de mission", 
                                                                 state="Dans le salon d'avant partie",
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
                                                                 key="mp:attachments/1135264530188992562/1199007140782813284/5rr7SXS.png?ex=65c0f96a&is=65ae846a&hm=f92e8757ce026cb26fc3d6e44e2e9e02ccb2577e9f047e62f9891c0f5925c725&=&format=webp&quality=lossless",
                                                                 application_id=application_id,
-                                                                url=streaming_url
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🔫 Template \"Call Of Duty\" séléctionnée.")
