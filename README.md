@@ -36,9 +36,12 @@ Open `config_selfbot.py` with any text editor and make sure to enter a __user__ 
 
 
 ## ☣️ Issues
-Yes, the SelfBot can disconnect withouth reason, yes the SelfBot can display random errors: the problem is the current library (selfcord.py)
+Yes, the SelfBot can disconnect withouth reason, yes the SelfBot can display random errors: the problem is the current library (selfcord.py).
+<br>
 **But**, the creator is currently working in a rewrite where all of these issues will be fixed.
+<br>
 Be patient and wait for the cretaor of selfcord.py to finish the rewrite.
+<br>
 As soon as the new rewrite come out, Nuclear will migrate to this version.
 
 
@@ -55,6 +58,7 @@ As soon as the new rewrite come out, Nuclear will migrate to this version.
 <table>
 
 A big thank to her !
+Check her current [project](https://github.com/Lenochxd/WebDeck) !
 
 # Support
 - Guilded server: [https://guilded.gg/nuclear](https://guilded.gg/nuclear)

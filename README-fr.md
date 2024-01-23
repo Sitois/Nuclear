@@ -36,9 +36,12 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
 * Et bien d'autres, consultez la commande `Help` !
 
 ## ☣️ Problèmes
-Oui, le SelfBot peut se déconnecter sans raison, oui le SelfBot peut afficher des erreurs aléatoires: le problème vient de la librairie utilisé: selfcord.py
+Oui, le SelfBot peut se déconnecter sans raison, oui le SelfBot peut afficher des erreurs aléatoires: le problème vient de la librairie utilisé: selfcord.py.
+<br>
 **Mais**, le créateur travaille actuellement sur une réecriture de selfcord.py où tout les bugs seront corrigés.
+<br>
 Soyez patient et attendez pour la sortie de la réecriture de la librairie.
+<br>
 Dès que la nouvelle version sort, Nuclear va migrer vers la nouvelle version.
 
 
@@ -55,6 +58,8 @@ Dès que la nouvelle version sort, Nuclear va migrer vers la nouvelle version.
 <table>
 
 Un grand merci à elle !
+
+Jettez un oeuil à son [projet](https://github.com/Lenochxd/Webdeck) !
 
 # Support
 - Serveur Guilded : [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
