@@ -49,10 +49,10 @@ As soon as the new rewrite come out, Nuclear will migrate to this version.
 <table align="center">
   <tr>
     <td align="center">
-      <a href="https://twitter.com/LenochJ">
-        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="LeLenoch" width="80px" height="80px" style="border-radius: 50%;">
+      <a href="https://github.com/Lenochxd">
+        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="Lenochxd" width="80px" height="80px" style="border-radius: 50%;">
         <br>
-        LeLenoch
+        Lenochxd
       </a>
     </td>
 <table>

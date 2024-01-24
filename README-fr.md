@@ -49,10 +49,10 @@ Dès que la nouvelle version sort, Nuclear va migrer vers la nouvelle version.
 <table align="center">
   <tr>
     <td align="center">
-      <a href="https://twitter.com/LenochJ">
-        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="Lenoch" width="80px" height="80px" style="border-radius: 50%;">
+      <a href="https://github.com/Lenochxd">
+        <img src="https://avatars.githubusercontent.com/u/101269524?s=64&v=4" alt="Lenochxd" width="80px" height="80px" style="border-radius: 50%;">
         <br>
-        Lenoch
+        Lenochxd
       </a>
     </td>
 <table>
