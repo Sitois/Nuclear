@@ -4,27 +4,36 @@
 #         config ^^   #
 #######################
 
-# selfbot name lol
+# en: SelfBot name
+# fr: Nom du SelfBot
 selfbot_name = "Nuclear SelfBot"
 
-# account token
+# en: Account Token.
+# fr: Token du compte.
 token = ""
 
+# en: Commands prefix.
+# fr: Prefix des commandes.
 prefix = "&"
 
-# default nitro sniper mode
+# fr: Langue.
+# en: Language.
+lang = "fr" # fr / en
+
+# fr: Default Nitro Sniper mode.
+# fr: Mode du Nitro Sniper par défaut. (True=On, False=Off)
 nitro_sniper = False
 
-# delay of delete
+# en: Commands delay of delete.
+# fr: Délai de supression des commandes.
 deltime = 20
 ########################
 
 
-#################
-#    config     #
-#   the         #
-#   rpc         #
-#################
+#######################
+# fr: RPC par défaut  #
+# en: Default RPC     #
+#######################
 
 activity_name = "Nuclear"
 activity_details = "Nuclear $B"
