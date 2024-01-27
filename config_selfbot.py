@@ -18,7 +18,7 @@ prefix = "&"
 
 # fr: Langue.
 # en: Language.
-lang = "fr" # fr / en
+lang = "en" # fr / en
 
 # fr: Default Nitro Sniper mode.
 # fr: Mode du Nitro Sniper par défaut. (True=On, False=Off)
