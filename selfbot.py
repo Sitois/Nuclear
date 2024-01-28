@@ -545,7 +545,7 @@ async def use(ctx):
     elif choice.lower() == "reset":
      await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
                                                                 url=streaming_url, 
