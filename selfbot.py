@@ -112,7 +112,7 @@ bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
 async def ready(time):
     print(Fore.RED, "[+]", Fore.LIGHTRED_EX, f"{fr_en.ready_text[config_selfbot.lang]} @{bot.user.name} ({bot.user.id}), {fr_en.ready_text_two[config_selfbot.lang]} {time:0.2f} seconds.", Style.RESET_ALL)
     print(Fore.MAGENTA + " ------------------", Style.RESET_ALL)
-    await bot.change_presence(status=config_selfbot.status_activity, afk=config_selfbot.afk, activity=selfcord.Activity.Stream(name=activity_name, details=activity_details, state=activity_state, url=streaming_url, buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, key=image_key, application_id=application_id))
+    await bot.change_presence(status=config_selfbot.status_activity, afk=config_selfbot.afk, activity=selfcord.Activity.Game(name=activity_name, details=activity_details, state=activity_state, buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, key=image_key, application_id=application_id))
 
 @bot.cmd(description="set nitro sniper")
 async def nitrosniper(ctx):
