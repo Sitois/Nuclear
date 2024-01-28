@@ -548,7 +548,6 @@ async def use(ctx):
                               activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -574,10 +573,9 @@ async def rpc_details(ctx):
     activity_details = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
-                                                                state=activity_state, 
-                                                                url=streaming_url, 
+                                                                state=activity_state,  
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -593,10 +591,9 @@ async def rpc_name(ctx):
     activity_name = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -612,10 +609,9 @@ async def rpc_state(ctx):
     activity_state = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk,
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -631,10 +627,9 @@ async def rpc_url(ctx):
     streaming_url = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -650,10 +645,9 @@ async def rpc_image(ctx):
     image_key = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -670,10 +664,9 @@ async def rpc_application_id(ctx):
     application_id = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -689,10 +682,9 @@ async def rpc_button_text_one(ctx):
     activity_button_one = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -708,10 +700,9 @@ async def rpc_button_text_two(ctx):
     activity_button_two = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -727,10 +718,9 @@ async def rpc_button_link_one(ctx):
     activity_button_one_answer = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -747,10 +737,9 @@ async def rpc_button_link_two(ctx):
     activity_button_two_answer = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
@@ -767,10 +756,9 @@ async def rpc_status(ctx):
     status_activity = ctx.message.content.replace(f"{message_split[0]} ", "")
     await bot.change_presence(status=status_activity, 
                               afk=afk, 
-                              activity=selfcord.Activity.Stream(name=activity_name, 
+                              activity=selfcord.Activity.Game(name=activity_name, 
                                                                 details=activity_details, 
                                                                 state=activity_state, 
-                                                                url=streaming_url, 
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
                                                                 key=image_key, 
                                                                 application_id=application_id
