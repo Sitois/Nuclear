@@ -202,9 +202,9 @@ async def general(ctx):
  `{config_selfbot.prefix}nitrosniper`: {fr_en.help_general_sniper[config_selfbot.lang]}.
  `{config_selfbot.prefix}flood`: Flood.
  `{config_selfbot.prefix}bio`: {fr_en.help_general_bio[config_selfbot.lang]}.
- `{config_selfbot.prefix}lang`
-
- `{config_selfbot.prefix}spam`: Spam. (`{config_selfbot.prefix}spam` 2 hello)""")
+ `{config_selfbot.prefix}spam`: Spam. (`{config_selfbot.prefix}spam` 2 hello)
+ `{config_selfbot.prefix}cat`: {fr_en.help_general_cat[config_selfbot.lang]} 🐈.
+ `{config_selfbot.prefix}lang`""")
     await asyncio.sleep(deltime)
     await msg.delete()
 

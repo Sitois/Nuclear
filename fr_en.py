@@ -41,6 +41,11 @@ help_general_ping = {
     "en": "Display the Selfbot's ping"
 }
 
+help_general_cat = {
+    "fr": "Chat mignon !",
+    "en": "Cute cat"
+}
+
 help_general_sniper = {
     "fr": "Active / désactive le NitroSniper",
     "en": "Enable / disable NitroSniper"
