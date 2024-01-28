@@ -234,6 +234,12 @@ template_help_youtube = {
     "en": "Use \"Python\" template."
 }
 
+template_help_gta = {
+    "fr": "Utilise la template \"GTA VI\".",
+    "en": "Use \"GTA VI\" template."
+}
+
+
 tutorial_rpc = {
     "fr": f""" Pour obtenir une image personnalisé:
   1. Envoyer une image (gif, png...) dans Discord. (dans n'importe quelle salon)

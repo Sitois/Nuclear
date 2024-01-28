@@ -366,7 +366,8 @@ async def template(ctx):
  "dark": {fr_en.template_help_dark[config_selfbot.lang]}
  "python": {fr_en.template_help_python[config_selfbot.lang]}
  "js": {fr_en.template_help_js[config_selfbot.lang]}
- "cod": {fr_en.template_help_cod[config_selfbot.lang]}''')
+ "cod": {fr_en.template_help_cod[config_selfbot.lang]}
+ "gta": {fr_en.template_help_gta[config_selfbot.lang]}''')
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -454,6 +455,20 @@ async def use(ctx):
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🏎️ Template \"Car\".")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "gta":
+     await bot.change_presence(status=status_activity, 
+                              afk=afk, 
+                              activity=selfcord.Activity.Game(name="Grand Theft Auto VI", 
+                                                                details="Welcome to Vice City !", 
+                                                                state="Playing SinglePlayer",
+                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
+                                                                key="mp:attachments/1135264530188992562/1200905385230475424/rhqvEdX.png?ex=65c7e14b&is=65b56c4b&hm=b375f98036eb15cedb369aff743ab040585f4777cc3756530e936fd5bbbb98d4&=&format=webp&quality=lossless&width=417&height=419",
+                                                                application_id=application_id,
+                                                                )
+                                                                )
+     msg = await ctx.message.edit(f"🔫 Template \"Grand Theft Auto VI\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "js":
