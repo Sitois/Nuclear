@@ -133,12 +133,12 @@ async def nitrosniper(ctx):
 async def lang(ctx):
     if config_selfbot.lang == "fr":
         config_selfbot.lang = "en"
-        msg = await ctx.message.edit("🟢 Language set to **en**.")
+        msg = await ctx.message.edit("🟢 Language set to **English**.")
         await asyncio.sleep(deltime)
         await msg.delete()
     elif config_selfbot.lang == "en":
         config_selfbot.lang = "fr"
-        msg = await ctx.message.edit("🟢 Langue changé en **fr**.")
+        msg = await ctx.message.edit("🟢 Langue changé en **Français**.")
         await asyncio.sleep(deltime)
         await msg.delete()
 
