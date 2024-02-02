@@ -32,6 +32,14 @@ $$ | \$$ |\$$$$$$  |\$$$$$$$\ $$ |\$$$$$$$\ \$$$$$$$ |$$ |
 
 
 
+if config_selfbot.token == "":
+   config_selfbot.token = input(f"Token: ")
+
+if config_selfbot.lang == "":
+   print("""Language Choice / Choix de la langue:
+fr: Français
+en: English""")
+   config_selfbot.lang = input("fr / en: ")
 
 
 
@@ -66,6 +74,49 @@ image_key = config_selfbot.image_key
 application_id = config_selfbot.application_id
 #################
 
+
+good_person = False
+
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+alphabet_majuscule = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+chiffres = [1, 2, 3, 4, 5 ,6, 7, 8, 9]
+alphabet_aleatoire = random.choice(alphabet)
+# FakeNitro
+alphabet_aleatoire_un = random.choice(alphabet)
+alphabet_aleatoire_deux = random.choice(alphabet)
+alphabet_aleatoire_trois = random.choice(alphabet)
+alphabet_aleatoire_quatre = random.choice(alphabet)
+alphabet_aleatoire_cinq = random.choice(alphabet)
+alphabet_aleatoire_six = random.choice(alphabet)
+alphabet_aleatoire_sept = random.choice(alphabet)
+alphabet_aleatoire_huit = random.choice(alphabet)
+alphabet_aleatoire_neuf = random.choice(alphabet)
+alphabet_aleatoire_dix = random.choice(alphabet)
+# ---------------------------------------------
+alphabet_majuscule_aleatoire = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_un = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_deux = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_trois = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_quatre = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_cinq = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_six = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_sept = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_huit = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_neuf = random.choice(alphabet_majuscule)
+alphabet_majuscule_aleatoire_dix = random.choice(alphabet_majuscule)
+# ---------------------------------------------
+chiffres_aleatoire = random.choice(chiffres)
+chiffres_aleatoire_un = random.choice(chiffres)
+chiffres_aleatoire_deux = random.choice(chiffres)
+chiffres_aleatoire_trois = random.choice(chiffres)
+chiffres_aleatoire_quatre = random.choice(chiffres)
+chiffres_aleatoire_cinq = random.choice(chiffres)
+chiffres_aleatoire_six = random.choice(chiffres)
+chiffres_aleatoire_sept = random.choice(chiffres)
+chiffres_aleatoire_huit = random.choice(chiffres)
+chiffres_aleatoire_neuf = random.choice(chiffres)
+chiffres_aleatoire_dix = random.choice(chiffres)
 
 poetry = {
     "fr": [
@@ -103,7 +154,21 @@ poetry = {
 }
 
 
-
+good_person_list =[
+   "GeForce RTX 4000",
+   "🍗",
+   "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
+   "AMD Ryzen™ 9 7900",
+   "Intel Core ",
+   "🐈",
+   "🍟",
+   "yipeeeeeeeee",
+   "😍",
+   "🌠",
+   "u r beautiful",
+   "you are all very intelligent",
+   "excuse me"
+]
 
 
 bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
@@ -112,7 +177,148 @@ bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
 async def ready(time):
     print(Fore.RED, "[+]", Fore.LIGHTRED_EX, f"{fr_en.ready_text[config_selfbot.lang]} @{bot.user.name} ({bot.user.id}), {fr_en.ready_text_two[config_selfbot.lang]} {time:0.2f} seconds.", Style.RESET_ALL)
     print(Fore.MAGENTA + " ------------------", Style.RESET_ALL)
-    await bot.change_presence(status=config_selfbot.status_activity, afk=config_selfbot.afk, activity=selfcord.Activity.Game(name=activity_name, details=activity_details, state=activity_state, buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, key=image_key, application_id=application_id))
+    await bot.change_presence(status=status_activity, afk=afk, activity=selfcord.Activity.Game(name=activity_name, details=activity_details, state=activity_state, buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, key=image_key, application_id=application_id))
+
+
+#############
+#############
+
+
+
+
+####################
+#  help            #
+#   command   !!!  #
+####################
+
+@bot.cmd(description="Help command !!", aliases=["aide"])
+async def help(ctx):
+    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
+  ☄ "{random.choice(poetry[config_selfbot.lang])}" ☄
+
+  🏮| __**General:**__ `{config_selfbot.prefix}general`
+  🎤| __**{fr_en.help_voice[config_selfbot.lang]}:**__ `{config_selfbot.prefix}voice`
+  🕹️| __**Riche Presence:**__ `{config_selfbot.prefix}presence`
+  🎲| __**Fun:**__ `{config_selfbot.prefix}fun`""")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+#############
+
+@bot.cmd()
+async def fun(ctx):
+    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
+
+🎲| __**Fun:**__
+ `{config_selfbot.prefix}cat`: {fr_en.help_fun_cat[config_selfbot.lang]}.
+ `{config_selfbot.prefix}good`: {fr_en.help_fun_good[config_selfbot.lang]} 🐈.
+ `{config_selfbot.prefix}call`: {fr_en.help_fun_call[config_selfbot.lang]}.
+ `{config_selfbot.prefix}gift`: {fr_en.help_fun_gift[config_selfbot.lang]}.""")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+#############
+
+@bot.cmd()
+async def general(ctx):
+    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
+
+🏮| __**GENERAL:**__
+ `{config_selfbot.prefix}snipe`: Snipe {fr_en.help_general_snipe[config_selfbot.lang]}.
+ `{config_selfbot.prefix}hype / {config_selfbot.prefix}squad`: {fr_en.help_general_hype[config_selfbot.lang]} (bravery, brilliance, balance).
+ `{config_selfbot.prefix}ping / {config_selfbot.prefix}latency`: {fr_en.help_general_ping[config_selfbot.lang]}.
+ `{config_selfbot.prefix}nitrosniper`: {fr_en.help_general_sniper[config_selfbot.lang]}.
+ `{config_selfbot.prefix}flood`: Flood.
+ `{config_selfbot.prefix}bio`: {fr_en.help_general_bio[config_selfbot.lang]}.
+ `{config_selfbot.prefix}spam`: Spam. (`{config_selfbot.prefix}spam` 2 hello)
+ `{config_selfbot.prefix}lang`""")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+#############
+
+@bot.cmd()
+async def voice(ctx):
+    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
+                           
+🎤| __**Voice:**__
+ `{config_selfbot.prefix}joinvc`: {fr_en.help_voice_vc[config_selfbot.lang]} (joinvc <voice_channel_id>).
+ `{config_selfbot.prefix}joincam`: {fr_en.help_voice_cam[config_selfbot.lang]} (joincam <voice_channel_id>).
+ `{config_selfbot.prefix}joinstream`: {fr_en.help_voice_stream[config_selfbot.lang]} (joinstream <voice_channel_id>).
+ `{config_selfbot.prefix}leavevc`: {fr_en.help_voice_leave[config_selfbot.lang]} (leavevc <voice_channel_id>.""")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+
+
+
+
+####################
+#  general         #
+#   command   !!!  #
+####################
+    
+@bot.cmd(description="Snipe (all servers).")
+async def snipe(ctx):
+    await ctx.message.edit(f"{bot.user.deleted_messages[-1].author}: {bot.user.deleted_messages[-1]}")
+
+#############
+
+@bot.cmd(description="Change HypeSquad badge.", aliases=["squad"])
+async def hype(ctx):
+     await bot.change_hypesquad(house=ctx.content.split()[1])
+     msg = await ctx.message.edit(f"🪄 HypeSquad {fr_en.hype_command[config_selfbot.lang]} '{ctx.message.content.split()[1]}'")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+
+#############
+
+@bot.cmd(description="Give the Ping.", aliases=["latency"])
+async def ping(ctx):
+    msg = await ctx.message.edit(f"🏓 Pong ! (Ping: **{bot.latency}**)")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+#############
+
+@bot.cmd()
+async def spam(ctx):
+    message_split = ctx.message.content.split()
+    content = ctx.message.content.replace(f"{message_split[0]} {message_split[1]} ", "")
+
+    await ctx.message.edit(content)
+
+    for i in range(int(message_split[1]) - 1):
+      await ctx.channel.send(content)
+      await asyncio.sleep(0.5)
+
+#############
+
+@bot.cmd()
+async def bio(ctx):
+    message_split = ctx.message.content.split()
+    new_bio = ctx.message.content.replace(f"{message_split[0]} ", "")
+    await bot.edit_profile(bio=new_bio)
+    msg = await ctx.message.edit(f"📖 Bio {fr_en.bio_command[config_selfbot.lang]} \"`{new_bio}`\"")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+#############
+
+@bot.cmd()
+async def lang(ctx):
+    if config_selfbot.lang == "fr":
+        config_selfbot.lang = "en"
+        msg = await ctx.message.edit("🟢 Language set to **English**.")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+    elif config_selfbot.lang == "en":
+        config_selfbot.lang = "fr"
+        msg = await ctx.message.edit("🟢 Langue changé en **Français**.")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+
+#############
 
 @bot.cmd(description="set nitro sniper")
 async def nitrosniper(ctx):
@@ -127,21 +333,8 @@ async def nitrosniper(ctx):
         msg = await ctx.message.edit("🔴 Nitro Sniper **Off**.")
         await asyncio.sleep(deltime)
         await msg.delete()
-    
 
-@bot.cmd(description="set nitro sniper")
-async def lang(ctx):
-    if config_selfbot.lang == "fr":
-        config_selfbot.lang = "en"
-        msg = await ctx.message.edit("🟢 Language set to **English**.")
-        await asyncio.sleep(deltime)
-        await msg.delete()
-    elif config_selfbot.lang == "en":
-        config_selfbot.lang = "fr"
-        msg = await ctx.message.edit("🟢 Langue changé en **Français**.")
-        await asyncio.sleep(deltime)
-        await msg.delete()
-
+#############
 
 @bot.on("message")
 async def nitro_detect(ctx):
@@ -149,117 +342,17 @@ async def nitro_detect(ctx):
       if not ctx.author.id == bot.user.id:
           if "discord.gift/" in ctx.content:
             reste = ctx.content.split("discord.gift/")[1]
-            await bot.redeem_nitro(f"discord.gift/{reste}")
+            await bot.redeem_nitro(f"{reste}")
             print(Fore.LIGHTYELLOW_EX, "[~]", Fore.YELLOW, f"Nitro Sniper: discord.gift/{reste}", Style.RESET_ALL)
 
 
 
-@bot.cmd()
-async def cat(ctx):
-    requests.get('https://api.thecatapi.com/v1/images/search')
-
-    if requests.get('https://api.thecatapi.com/v1/images/search').status_code == 200:
-        data = json.loads(requests.get('https://api.thecatapi.com/v1/images/search').text)
-        cat_image_url = data[0]['url']
-        await ctx.message.edit(cat_image_url)
-    else:
-        await ctx.message.edit(f"failed for the cute cat: {requests.get('https://api.thecatapi.com/v1/images/search').text}")
-        return
-    
 
 
-
-
-@bot.cmd(description="change bio")
-async def bio(ctx):
-    message_split = ctx.message.content.split()
-    new_bio = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.edit_profile(bio=new_bio)
-    msg = await ctx.message.edit(f"📖 Bio {fr_en.bio_command[config_selfbot.lang]} \"`{new_bio}`\"")
-    await asyncio.sleep(deltime)
-    await msg.delete()
-
-@bot.cmd(description="Help command !!", aliases=["aide"])
-async def help(ctx):
-    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
-  ☄ "{random.choice(poetry[config_selfbot.lang])}" ☄
-
-  🏮| __**General:**__ `{config_selfbot.prefix}general`
-  🎤| __**{fr_en.help_voice[config_selfbot.lang]}:**__ `{config_selfbot.prefix}voice`
-  🕹️| __**Riche Presence:**__ `{config_selfbot.prefix}presence`""")
-    await asyncio.sleep(deltime)
-    await msg.delete()
-
-
-@bot.cmd(description="help general lol")
-async def general(ctx):
-    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
-
-🏮| __**GENERAL:**__
- `{config_selfbot.prefix}snipe`: Snipe {fr_en.help_general_snipe[config_selfbot.lang]}.
- `{config_selfbot.prefix}hype / {config_selfbot.prefix}squad`: {fr_en.help_general_hype[config_selfbot.lang]} (bravery, brilliance, balance).
- `{config_selfbot.prefix}ping / {config_selfbot.prefix}latency`: {fr_en.help_general_ping[config_selfbot.lang]}.
- `{config_selfbot.prefix}nitrosniper`: {fr_en.help_general_sniper[config_selfbot.lang]}.
- `{config_selfbot.prefix}flood`: Flood.
- `{config_selfbot.prefix}bio`: {fr_en.help_general_bio[config_selfbot.lang]}.
- `{config_selfbot.prefix}spam`: Spam. (`{config_selfbot.prefix}spam` 2 hello)
- `{config_selfbot.prefix}cat`: {fr_en.help_general_cat[config_selfbot.lang]} 🐈.
- `{config_selfbot.prefix}lang`""")
-    await asyncio.sleep(deltime)
-    await msg.delete()
-
-
-
-
-
-@bot.cmd(description="help voice lul")
-async def voice(ctx):
-    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
-                           
-🎤| __**Voice:**__
- `{config_selfbot.prefix}joinvc`: {fr_en.help_voice_vc[config_selfbot.lang]} (joinvc <voice_channel_id>).
- `{config_selfbot.prefix}joincam`: {fr_en.help_voice_cam[config_selfbot.lang]} (joincam <voice_channel_id>).
- `{config_selfbot.prefix}joinstream`: {fr_en.help_voice_stream[config_selfbot.lang]} (joinstream <voice_channel_id>).
- `{config_selfbot.prefix}leavevc`: {fr_en.help_voice_leave[config_selfbot.lang]} (leavevc <voice_channel_id>.""")
-    await asyncio.sleep(deltime)
-    await msg.delete()
-
-
-@bot.cmd(description="Leave the voice")
-async def leavevc(ctx):
-    voice_channel = bot.get_channel(ctx.message.content.split()[1])
-    try:
-        await selfcord.VoiceChannel.leave_call(voice_channel)
-        msg = await ctx.message.edit(f"💼 {fr_en.leave_voice[config_selfbot.lang]} {voice_channel.name}.")
-        await asyncio.sleep(deltime)
-        await msg.delete()
-    except Exception as e:
-        msg = await ctx.message.edit(f"❌ {fr_en.leave_voice_error[config_selfbot.lang]} : {e}")
-        await asyncio.sleep(deltime)
-        await msg.delete()
-    
-
-
-
-
-
-##########
-# snipe  #
-##########
-
-
-
-@bot.cmd(description="Snipe (all servers).")
-async def snipe(ctx):
-    await ctx.message.edit(f"{bot.user.deleted_messages[-1].author}: {bot.user.deleted_messages[-1]}")
-
-
-@bot.cmd(description="Change HypeSquad badge.", aliases=["squad"])
-async def hype(ctx):
-     await bot.change_hypesquad(house=ctx.content.split()[1])
-     msg = await ctx.message.edit(f"🪄 HypeSquad {fr_en.hype_command[config_selfbot.lang]} '{ctx.message.content.split()[1]}'")
-     await asyncio.sleep(deltime)
-     await msg.delete()
+####################
+# voice            #
+#   command   !!!  #
+####################
 
 @bot.cmd(description="Join a voice channel.")
 async def joinvc(ctx):
@@ -275,6 +368,8 @@ async def joinvc(ctx):
         await asyncio.sleep(deltime)
         await msg.delete()
 
+#############
+
 @bot.cmd(description="Join a voice channel with camera.")
 async def joincam(ctx):
     voice_channel = bot.get_channel(ctx.message.content.split()[1])
@@ -287,6 +382,8 @@ async def joincam(ctx):
         msg = await ctx.message.edit(f"❌ {fr_en.voice_join_error[config_selfbot.lang]} : {e}")
         await asyncio.sleep(deltime)
         await msg.delete()
+
+#############
 
 @bot.cmd(description="Join a voice channel with a stream.")
 async def joinstream(ctx):
@@ -302,22 +399,111 @@ async def joinstream(ctx):
         await asyncio.sleep(deltime)
         await msg.delete()
 
-@bot.cmd(description="Give the Ping.", aliases=["latency"])
-async def ping(ctx):
-    msg = await ctx.message.edit(f"🏓 Pong ! (Ping: **{bot.latency}**)")
-    await asyncio.sleep(deltime)
-    await msg.delete()
+#############
 
-@bot.cmd(description="chiant")
-async def spam(ctx):
-    message_split = ctx.message.content.split()
-    content = ctx.message.content.replace(f"{message_split[0]} {message_split[1]} ", "")
+@bot.cmd(description="Leave the voice")
+async def leavevc(ctx):
+    voice_channel = bot.get_channel(ctx.message.content.split()[1])
+    try:
+        await selfcord.VoiceChannel.leave_call(voice_channel)
+        msg = await ctx.message.edit(f"💼 {fr_en.leave_voice[config_selfbot.lang]} {voice_channel.name}.")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+    except Exception as e:
+        msg = await ctx.message.edit(f"❌ {fr_en.leave_voice_error[config_selfbot.lang]} : {e}")
+        await asyncio.sleep(deltime)
+        await msg.delete()
 
-    await ctx.message.edit(content)
 
-    for i in range(int(message_split[1]) - 1):
-      await ctx.channel.send(content)
-      await asyncio.sleep(0.5)
+
+
+
+
+####################
+# fun              #
+#   command   !!!  #
+####################
+
+@bot.cmd()
+async def call(ctx):
+   voice_channel = bot.get_channel(ctx.channel.id)
+   await ctx.message.delete()
+   for i in range(5):
+    try:
+        await selfcord.VoiceChannel.call(voice_channel)
+        await asyncio.sleep(0.5)
+        await selfcord.VoiceChannel.leave_call(voice_channel)
+        await asyncio.sleep(0.6)
+    except Exception as e:
+       print(f"{fr_en.voice_join_error[config_selfbot.lang]}: {e}")
+
+#############
+
+@bot.cmd()
+async def good(ctx):
+    global good_person
+    if good_person == False:
+        good_person = True
+        msg = await ctx.message.edit(f"🌈 Good Person {fr_en.enable[config_selfbot.lang]}")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+    elif good_person == True:
+        good_person = False
+        msg = await ctx.message.edit(f"🔥 Good Person {fr_en.disable[config_selfbot.lang]}")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+
+#############
+
+@bot.on("message")
+async def insult_detect(ctx):
+    global good_person
+    if good_person == True:
+      if ctx.author.id == bot.user.id:
+        if "fuck" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "shit" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "pute" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "connard" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "connasse" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "conasse" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "nigg" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "bitch" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "kys" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "fdp" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+        elif "ntm" in ctx.content:
+           await ctx.edit(random.choice(good_person_list))
+
+#############
+
+@bot.cmd()
+async def cat(ctx):
+    requests.get('https://api.thecatapi.com/v1/images/search')
+
+    if requests.get('https://api.thecatapi.com/v1/images/search').status_code == 200:
+        data = json.loads(requests.get('https://api.thecatapi.com/v1/images/search').text)
+        cat_image_url = data[0]['url']
+        await ctx.message.edit(cat_image_url)
+    else:
+        await ctx.message.edit(f"failed for the cute cat: {requests.get('https://api.thecatapi.com/v1/images/search').text}")
+        return
+
+#############
+
+@bot.cmd()
+async def gift(ctx):
+    await ctx.message.edit(f"discord.gift/{random.choice(chiffres)}{random.choice(alphabet).upper()}{random.choice(alphabet).upper()}{random.choice(alphabet).upper()}{random.choice(alphabet)}{random.choice(alphabet)}{random.choice(alphabet)}{random.choice(chiffres)}{random.choice(alphabet).upper()}{random.choice(alphabet)}{random.choice(chiffres)}{random.choice(alphabet)}{random.choice(alphabet).upper()}{random.choice(alphabet).upper()}{random.choice(alphabet)}{random.choice(alphabet)}{random.choice(chiffres)}")
+
+
 
 
 
@@ -329,7 +515,7 @@ async def spam(ctx):
 
 
 
-@bot.cmd(description='rpc help lul')
+@bot.cmd()
 async def presence(ctx):
     msg = await ctx.message.edit(f'''☄ __**{config_selfbot.selfbot_name} :**__ ☄
 
@@ -350,7 +536,9 @@ async def presence(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
-@bot.cmd(description='rpc help lul')
+#############
+
+@bot.cmd()
 async def template(ctx):
     msg = await ctx.message.edit(f'''☄ __**{config_selfbot.selfbot_name} :**__ ☄
 
@@ -371,8 +559,9 @@ async def template(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
 
-@bot.cmd(description='rpc tuto lul')
+@bot.cmd()
 async def tuto(ctx):
     msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
 
@@ -381,8 +570,7 @@ async def tuto(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
-
-
+#############
 
 @bot.cmd()
 async def use(ctx):
@@ -419,8 +607,8 @@ async def use(ctx):
      await bot.change_presence(status=status_activity, 
                               afk=afk,
                               activity=selfcord.Activity.Game(name="Call Of Duty: MWIII", 
-                                                                details="En attente de mission", 
-                                                                state="Dans le salon d'avant partie",
+                                                                details=f"{fr_en.rpc_cod_details[config_selfbot.lang]}", 
+                                                                state=f"{fr_en.rpc_cod_state[config_selfbot.lang]}",
                                                                 buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
                                                                 key="mp:attachments/1135264530188992562/1199007140782813284/5rr7SXS.png?ex=65c0f96a&is=65ae846a&hm=f92e8757ce026cb26fc3d6e44e2e9e02ccb2577e9f047e62f9891c0f5925c725&=&format=webp&quality=lossless",
                                                                 application_id=application_id,
@@ -455,20 +643,6 @@ async def use(ctx):
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🏎️ Template \"Car\".")
-     await asyncio.sleep(deltime)
-     await msg.delete()
-    elif choice.lower() == "gta":
-     await bot.change_presence(status=status_activity, 
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name="Grand Theft Auto VI", 
-                                                                details="Welcome to Vice City !", 
-                                                                state="Playing SinglePlayer",
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
-                                                                key="mp:attachments/1135264530188992562/1200905385230475424/rhqvEdX.png?ex=65c7e14b&is=65b56c4b&hm=b375f98036eb15cedb369aff743ab040585f4777cc3756530e936fd5bbbb98d4&=&format=webp&quality=lossless&width=417&height=419",
-                                                                application_id=application_id,
-                                                                )
-                                                                )
-     msg = await ctx.message.edit(f"🔫 Template \"Grand Theft Auto VI\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "js":
@@ -542,6 +716,20 @@ async def use(ctx):
      msg = await ctx.message.edit(f"🖤 Template \"Dark\".")
      await asyncio.sleep(deltime)
      await msg.delete()
+    elif choice.lower() == "gta":
+     await bot.change_presence(status=status_activity, 
+                              afk=afk, 
+                              activity=selfcord.Activity.Game(name="Grand Theft Auto VI", 
+                                                                details="Welcome to Vice City !", 
+                                                                state="Playing SinglePlayer",
+                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
+                                                                key="mp:attachments/1135264530188992562/1200905385230475424/rhqvEdX.png?ex=65c7e14b&is=65b56c4b&hm=b375f98036eb15cedb369aff743ab040585f4777cc3756530e936fd5bbbb98d4&=&format=webp&quality=lossless&width=417&height=419",
+                                                                application_id=application_id,
+                                                                )
+                                                                )
+     msg = await ctx.message.edit(f"🔫 Template \"Grand Theft Auto VI\".")
+     await asyncio.sleep(deltime)
+     await msg.delete()
     elif choice.lower() == "reset":
      await bot.change_presence(status=status_activity, 
                               afk=afk, 
@@ -563,7 +751,7 @@ async def use(ctx):
 
 
 
-
+#############
 
 
 
@@ -585,6 +773,8 @@ async def rpc_details(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
+
 @bot.cmd(description='set rpc title')
 async def rpc_name(ctx):
     message_split = ctx.message.content.split()
@@ -602,6 +792,8 @@ async def rpc_name(ctx):
     msg = await ctx.message.edit(f"🕹️| Name: `{activity_name}`")
     await asyncio.sleep(deltime)
     await msg.delete()
+
+#############
 
 @bot.cmd(description='set rpc title')
 async def rpc_state(ctx):
@@ -621,6 +813,8 @@ async def rpc_state(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
+
 @bot.cmd(description='set rpc title')
 async def rpc_url(ctx):
     message_split = ctx.message.content.split()
@@ -638,6 +832,8 @@ async def rpc_url(ctx):
     msg = await ctx.message.edit(f"🕹️| Stream URL: `{streaming_url}`")
     await asyncio.sleep(deltime)
     await msg.delete()
+
+#############
 
 @bot.cmd(description='set rpc title')
 async def rpc_image(ctx):
@@ -657,6 +853,7 @@ async def rpc_image(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
 
 @bot.cmd(description='set rpc title')
 async def rpc_application_id(ctx):
@@ -676,6 +873,8 @@ async def rpc_application_id(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
+
 @bot.cmd(description='set rpc title')
 async def rpc_button_text_one(ctx):
     message_split = ctx.message.content.split()
@@ -693,6 +892,8 @@ async def rpc_button_text_one(ctx):
     msg = await ctx.message.edit(f"🕹️| Button One Text: `{activity_button_one}`")
     await asyncio.sleep(deltime)
     await msg.delete()
+
+#############
 
 @bot.cmd(description='set rpc title')
 async def rpc_button_text_two(ctx):
@@ -712,6 +913,8 @@ async def rpc_button_text_two(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
+
 @bot.cmd(description='set rpc title')
 async def rpc_button_link_one(ctx):
     message_split = ctx.message.content.split()
@@ -730,6 +933,7 @@ async def rpc_button_link_one(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
 
 @bot.cmd(description='set rpc title')
 async def rpc_button_link_two(ctx):
@@ -749,6 +953,7 @@ async def rpc_button_link_two(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
 
 @bot.cmd(description='set rpc title')
 async def rpc_status(ctx):
@@ -855,6 +1060,15 @@ async def flood(ctx):
       await ctx.channel.send(flood_spam) 
       await asyncio.sleep(0.4)
 
+
+
+
+
+
+####################
+# start the        #
+#      selfbot !!  #
+####################
     
 try:
     bot.run(token)
