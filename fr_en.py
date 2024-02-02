@@ -1,5 +1,14 @@
 import config_selfbot
 
+enable = {
+    "fr": "activé",
+    "en": "enabled"
+}
+
+disable = {
+    "fr": "désactivé",
+    "en": "disabled"
+}
 
 start_text = {
     "fr": "Démarrage du SelfBot en cours...",
@@ -39,11 +48,6 @@ help_general_hype = {
 help_general_ping = {
     "fr": "Affiche la latence du SelfBot",
     "en": "Display the Selfbot's ping"
-}
-
-help_general_cat = {
-    "fr": "Chat mignon !",
-    "en": "Cute cat"
 }
 
 help_general_sniper = {
@@ -245,6 +249,18 @@ template_help_gta = {
 }
 
 
+
+rpc_cod_details = {
+    "fr": "En attente de mission...",
+    "en": "Waiting for a mission..."
+}
+
+rpc_cod_state = {
+    "fr": "En attente de mission...",
+    "en": "In the main menu"
+}
+
+
 tutorial_rpc = {
     "fr": f""" Pour obtenir une image personnalisé:
   1. Envoyer une image (gif, png...) dans Discord. (dans n'importe quelle salon)
@@ -256,4 +272,27 @@ tutorial_rpc = {
   2. Right Click and "Copy Image Link".
   3. Do `{config_selfbot.prefix}rpc_image mp:attachements/67484738743874387438/657438923487543/example.png`.
   4. Done !"""
+}
+
+
+
+
+help_fun_cat = {
+    "fr": "Chat mignon😻😻",
+    "en": "Cute cat😻😻"
+}
+
+help_fun_good = {
+    "fr": "Vous transforme en une Bonne Personne ! (*censure les insultes*)",
+    "en": "Transform you into a Good Person ! (*no insults*)"
+}
+
+help_fun_call = {
+    "fr": "Spam d'appel (le salon doit être un salon vocal !)",
+    "en": "Join and Leave the voice (the channel must be a voice channel!)"
+}
+
+help_fun_gift = {
+    "fr": "Envoie un faux lien Nitro",
+    "en": "Send a fake Nitro"
 }
