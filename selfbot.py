@@ -251,17 +251,29 @@ async def ping(ctx):
 async def spam(ctx):
     global is_spamming
     message_split = ctx.message.content.split()
+
     content = ctx.message.content.replace(f"{message_split[0]} {message_split[1]} ", "")
+
+    try:
+        count = int(message_split[1]) - 1
+    except Exception:
+        msg = await ctx.message.edit(f"{fr_en.spam_invalid[config_selfbot.lang]}!")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+        return
     if is_spamming == False:
       is_spamming = True
+
       await ctx.message.edit(content)
 
-      for i in range(int(message_split[1]) - 1):
+      for i in range(count):
         await ctx.channel.send(content)
         await asyncio.sleep(0.5)
       is_spamming = False
     else:
-       await ctx.message.edit(fr_en.spam_cooldown[config_selfbot.lang])
+       msg = await ctx.message.edit(fr_en.spam_cooldown[config_selfbot.lang])
+       await asyncio.sleep(deltime)
+       await msg.delete()
 
 #############
 
