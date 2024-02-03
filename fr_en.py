@@ -147,6 +147,11 @@ spam_cooldown = {
     "en": f"❌ A spam is already active!"
 }
 
+spam_invalid = {
+    "fr": f"❌ Veuillez indiquer un nombre valide !",
+    "en": f"❌ You must enter a valid number!"
+}
+
 voice_join = {
     "fr": "Connecté au salon vocal",
     "en": "Connected to"
@@ -204,8 +209,8 @@ rpc_state_translate = {
 }
 
 rpc_url_translate = {
-    "fr": "Défini l'url de steaming du RPC",
-    "en": "Set RPC's streaming URL"
+    "fr": "Défini l'url de steaming du RPC (https://twitch.tv/nom)",
+    "en": "Set RPC's streaming URL (https://twitch.tv/name)"
 }
 
 rpc_id_translate = {
