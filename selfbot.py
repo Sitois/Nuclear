@@ -28,7 +28,7 @@ $$ $$\$$ |$$ |  $$ |$$  _____|$$ |$$  __$$\  \____$$\ $$  __$$\
 $$ \$$$$ |$$ |  $$ |$$ /      $$ |$$$$$$$$ | $$$$$$$ |$$ |  \__|
 $$ |\$$$ |$$ |  $$ |$$ |      $$ |$$   ____|$$  __$$ |$$ |      
 $$ | \$$ |\$$$$$$  |\$$$$$$$\ $$ |\$$$$$$$\ \$$$$$$$ |$$ |      
-\__|  \__| \______/  \_______|\__| \_______| \_______|\__|  v0.6    """, Style.RESET_ALL)
+\__|  \__| \______/  \_______|\__| \_______| \_______|\__|  v0.6   """, Style.RESET_ALL)
 
 
 
@@ -74,6 +74,7 @@ image_key = config_selfbot.image_key
 application_id = config_selfbot.application_id
 #################
 
+is_spamming = False
 
 good_person = False
 
@@ -163,7 +164,7 @@ async def help(ctx):
 
   🏮| __**General:**__ `{config_selfbot.prefix}general`
   🎤| __**{fr_en.help_voice[config_selfbot.lang]}:**__ `{config_selfbot.prefix}voice`
-  🕹️| __**Riche Presence:**__ `{config_selfbot.prefix}presence`
+  🕹️| __**Rich Presence:**__ `{config_selfbot.prefix}presence`
   🎲| __**Fun:**__ `{config_selfbot.prefix}fun`""")
     await asyncio.sleep(deltime)
     await msg.delete()
@@ -248,14 +249,19 @@ async def ping(ctx):
 
 @bot.cmd()
 async def spam(ctx):
+    global is_spamming
     message_split = ctx.message.content.split()
     content = ctx.message.content.replace(f"{message_split[0]} {message_split[1]} ", "")
+    if is_spamming == False:
+      is_spamming = True
+      await ctx.message.edit(content)
 
-    await ctx.message.edit(content)
-
-    for i in range(int(message_split[1]) - 1):
-      await ctx.channel.send(content)
-      await asyncio.sleep(0.5)
+      for i in range(int(message_split[1]) - 1):
+        await ctx.channel.send(content)
+        await asyncio.sleep(0.5)
+      is_spamming = False
+    else:
+       await ctx.message.edit(fr_en.spam_cooldown[config_selfbot.lang])
 
 #############
 

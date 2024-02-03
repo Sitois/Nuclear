@@ -1,5 +1,10 @@
 import config_selfbot
 
+#######################
+#  selfbot            #
+#    translation >.<  #
+#######################
+
 enable = {
     "fr": "activé",
     "en": "enabled"
@@ -9,6 +14,13 @@ disable = {
     "fr": "désactivé",
     "en": "disabled"
 }
+
+
+
+####################
+#  launch          #
+# translation !!!  #
+####################
 
 start_text = {
     "fr": "Démarrage du SelfBot en cours...",
@@ -25,10 +37,13 @@ ready_text_two = {
     "en": "started in"
 }
 
-bio_command = {
-    "fr": "changée en",
-    "en": "changed to"
-}
+
+####################
+#  help            #
+# translation !!!  #
+####################
+
+
 
 help_voice = {
     "fr": "Vocal",
@@ -81,6 +96,32 @@ help_voice_leave = {
     "en": "Leave the voice channnel"
 }
 
+help_fun_cat = {
+    "fr": "Chat mignon😻😻",
+    "en": "Cute cat😻😻"
+}
+
+help_fun_good = {
+    "fr": "Vous transforme en une Bonne Personne ! (*censure les insultes*)",
+    "en": "Transform you into a Good Person ! (*no insults*)"
+}
+
+help_fun_call = {
+    "fr": "Spam d'appel (le salon doit être un salon vocal !)",
+    "en": "Join and Leave the voice (the channel must be a voice channel!)"
+}
+
+help_fun_gift = {
+    "fr": "Envoie un faux lien Nitro",
+    "en": "Send a fake Nitro"
+}
+
+
+####################
+#  commands        #
+# translation !!!  #
+####################
+
 leave_voice = {
     "fr": "Déconnection du salon",
     "en": "Disconnected from"
@@ -94,6 +135,16 @@ leave_voice_error = {
 hype_command = {
     "fr": "modifié en",
     "en": "changed to"
+}
+
+bio_command = {
+    "fr": "changée en",
+    "en": "changed to"
+}
+
+spam_cooldown = {
+    "fr": f"❌ Un spam est déjà en cours ! Stoppez le avec `{config_selfbot.prefix}cancel`",
+    "en": f"❌ A spam is already active! Cancel it with `{config_selfbot.prefix}cancel`!"
 }
 
 voice_join = {
@@ -124,7 +175,10 @@ voice_stream_join = {
 
 
 
-
+####################
+#  rpc             #
+# translation !!!  #
+####################
 
 
 
@@ -187,6 +241,10 @@ rpc_button_link_two_translate = {
 
 
 
+####################
+# template         #
+# translation !!!  #
+####################
 
 template_help_reset = {
     "fr": "Réinitialise votre RPC.",
@@ -272,27 +330,4 @@ tutorial_rpc = {
   2. Right Click and "Copy Image Link".
   3. Do `{config_selfbot.prefix}rpc_image mp:attachements/67484738743874387438/657438923487543/example.png`.
   4. Done !"""
-}
-
-
-
-
-help_fun_cat = {
-    "fr": "Chat mignon😻😻",
-    "en": "Cute cat😻😻"
-}
-
-help_fun_good = {
-    "fr": "Vous transforme en une Bonne Personne ! (*censure les insultes*)",
-    "en": "Transform you into a Good Person ! (*no insults*)"
-}
-
-help_fun_call = {
-    "fr": "Spam d'appel (le salon doit être un salon vocal !)",
-    "en": "Join and Leave the voice (the channel must be a voice channel!)"
-}
-
-help_fun_gift = {
-    "fr": "Envoie un faux lien Nitro",
-    "en": "Send a fake Nitro"
 }
