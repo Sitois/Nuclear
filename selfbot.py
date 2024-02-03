@@ -79,44 +79,9 @@ good_person = False
 
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-alphabet_majuscule = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
 chiffres = [1, 2, 3, 4, 5 ,6, 7, 8, 9]
-alphabet_aleatoire = random.choice(alphabet)
-# FakeNitro
-alphabet_aleatoire_un = random.choice(alphabet)
-alphabet_aleatoire_deux = random.choice(alphabet)
-alphabet_aleatoire_trois = random.choice(alphabet)
-alphabet_aleatoire_quatre = random.choice(alphabet)
-alphabet_aleatoire_cinq = random.choice(alphabet)
-alphabet_aleatoire_six = random.choice(alphabet)
-alphabet_aleatoire_sept = random.choice(alphabet)
-alphabet_aleatoire_huit = random.choice(alphabet)
-alphabet_aleatoire_neuf = random.choice(alphabet)
-alphabet_aleatoire_dix = random.choice(alphabet)
-# ---------------------------------------------
-alphabet_majuscule_aleatoire = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_un = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_deux = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_trois = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_quatre = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_cinq = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_six = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_sept = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_huit = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_neuf = random.choice(alphabet_majuscule)
-alphabet_majuscule_aleatoire_dix = random.choice(alphabet_majuscule)
-# ---------------------------------------------
-chiffres_aleatoire = random.choice(chiffres)
-chiffres_aleatoire_un = random.choice(chiffres)
-chiffres_aleatoire_deux = random.choice(chiffres)
-chiffres_aleatoire_trois = random.choice(chiffres)
-chiffres_aleatoire_quatre = random.choice(chiffres)
-chiffres_aleatoire_cinq = random.choice(chiffres)
-chiffres_aleatoire_six = random.choice(chiffres)
-chiffres_aleatoire_sept = random.choice(chiffres)
-chiffres_aleatoire_huit = random.choice(chiffres)
-chiffres_aleatoire_neuf = random.choice(chiffres)
-chiffres_aleatoire_dix = random.choice(chiffres)
+
 
 poetry = {
     "fr": [
