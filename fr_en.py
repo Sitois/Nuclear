@@ -143,8 +143,8 @@ bio_command = {
 }
 
 spam_cooldown = {
-    "fr": f"❌ Un spam est déjà en cours ! Stoppez le avec `{config_selfbot.prefix}cancel`",
-    "en": f"❌ A spam is already active! Cancel it with `{config_selfbot.prefix}cancel`!"
+    "fr": f"❌ Un spam est déjà en cours !",
+    "en": f"❌ A spam is already active!"
 }
 
 voice_join = {
