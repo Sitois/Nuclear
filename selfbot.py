@@ -62,6 +62,8 @@ nitro_sniper = config_selfbot.nitro_sniper
 
 deltime = config_selfbot.deltime
 
+deltime_ai = config_selfbot.deltime_ai
+
 
 activity_name = config_selfbot.activity_name
 activity_details = config_selfbot.activity_details
@@ -255,8 +257,10 @@ async def ai(ctx):
     ai_ask = content
     await ctx.message.edit(f"⌚ {fr_en.ai_wait[config_selfbot.lang]}...")
     query_result = chatbot.query(f"Question: {ai_ask}. You MUST answer entirely in {config_selfbot.language_ai} with a maximum of 1800 characters. You MUST anwser normally to the question (without specifying the characters limit.)")
-    await ctx.message.edit( f"""❓| Question: {ai_ask}
+    msg = await ctx.message.edit( f"""❓| Question: {ai_ask}
 ✅| {fr_en.ai_response[config_selfbot.lang]}: {query_result}""")
+    await asyncio.sleep(deltime_ai)
+    await msg.delete()
 
 #############
 

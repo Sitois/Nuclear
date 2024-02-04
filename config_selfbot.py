@@ -56,11 +56,14 @@ application_id = "1200865454319747142"
 #   ai          #
 #################
 
-# fr: Identifiants et mot de passe pour la commande &ai.
-# en: Email and Password for the &ai command.
+# fr: Identifiants et mot de passe de HuggingChat.
+# en: Email and Password of HuggingChat.
 hug_chat_email = ""
 hug_chat_password = ""
 # fr: langue dans laquelle l'IA dois vous répondre.
 # en: Language for the AI answer.
 language_ai = "english"
+# en: AI's answer delay of delete.
+# fr: Délai de supression des réponses.
+deltime_ai = 20
 #################
