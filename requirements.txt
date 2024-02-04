@@ -1,3 +1,4 @@
 selfcord.py
 colorama
 requests
+hugchat

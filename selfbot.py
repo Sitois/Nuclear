@@ -9,6 +9,8 @@ try:
     import requests
     import json
     import fr_en
+    from hugchat import hugchat
+    from hugchat.login import Login
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", '-r' , 'requirements.txt'])
     import sys
@@ -20,6 +22,8 @@ except ImportError:
     import requests
     import json
     import fr_en
+    from hugchat import hugchat
+    from hugchat.login import Login
 
 print(Fore.LIGHTCYAN_EX + """$$\   $$\                     $$\                               
 $$$\  $$ |                    $$ |                              
@@ -197,6 +201,7 @@ async def general(ctx):
  `{config_selfbot.prefix}flood`: Flood.
  `{config_selfbot.prefix}bio`: {fr_en.help_general_bio[config_selfbot.lang]}.
  `{config_selfbot.prefix}spam`: Spam. (`{config_selfbot.prefix}spam` 2 hello)
+ `{config_selfbot.prefix}ai`: {fr_en.ai_help[config_selfbot.lang]}. (`{config_selfbot.prefix}ai` how are you today ?)
  `{config_selfbot.prefix}lang`""")
     await asyncio.sleep(deltime)
     await msg.delete()
@@ -236,6 +241,22 @@ async def hype(ctx):
      msg = await ctx.message.edit(f"🪄 HypeSquad {fr_en.hype_command[config_selfbot.lang]} '{ctx.message.content.split()[1]}'")
      await asyncio.sleep(deltime)
      await msg.delete()
+
+#############
+     
+@bot.cmd()
+async def ai(ctx):
+    message_split = ctx.message.content.split()
+    content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    # AI CONFIGURATION
+    sign = Login(config_selfbot.hug_chat_email, config_selfbot.hug_chat_password)
+    cookies = sign.login()
+    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+    ai_ask = content
+    await ctx.message.edit(f"⌚ {fr_en.ai_wait[config_selfbot.lang]}...")
+    query_result = chatbot.query(f"Question: {ai_ask}. You MUST answer entirely in {config_selfbot.language_ai} with a maximum of 1800 characters. You MUST anwser normally to the question (without specifying the characters limit.)")
+    await ctx.message.edit( f"""❓| Question: {ai_ask}
+✅| {fr_en.ai_response[config_selfbot.lang]}: {query_result}""")
 
 #############
 

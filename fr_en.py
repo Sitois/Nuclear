@@ -122,6 +122,26 @@ help_fun_gift = {
 # translation !!!  #
 ####################
 
+ai_response = {
+    "fr": "Réponse",
+    "en": "Answer"
+}
+
+ai_wait = {
+    "fr": "patientez", 
+    "en": "wait"
+}
+
+ai_help = {
+    "fr": "Posez une question à l'IA", 
+    "en": "Ask a question to an IA"
+}
+
+ai_error = {
+    "fr": "Vous devez configurer l'e-mail et le mot de passe dans ``config_selfbot.py`` !",
+    "en": "You must configure e-mail and password in ``config_selfbot.py``!"
+}
+
 leave_voice = {
     "fr": "Déconnection du salon",
     "en": "Disconnected from"
