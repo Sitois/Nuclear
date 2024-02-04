@@ -33,6 +33,8 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
 * Templates RPC personnalisés,
 * Commandes vocal,
 * Nitro Sniper,
+* Commande IA,
+* Flood et Spam,
 * Et bien d'autres, consultez la commande `Help` !
 
 ## ☣️ Problèmes

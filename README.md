@@ -32,6 +32,8 @@ Open `config_selfbot.py` with any text editor and make sure to enter a __user__ 
 * Custom RPC templates,
 * Voice commands,
 * Nitro Sniper,
+* AI command,
+* Spam and Flood command,
 * And others, check the `Help` command!
 
 
