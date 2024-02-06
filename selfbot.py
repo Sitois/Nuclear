@@ -11,6 +11,8 @@ try:
     import fr_en
     from hugchat import hugchat
     from hugchat.login import Login
+    import platform
+    import ctypes
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", '-r' , 'requirements.txt'])
     import sys
@@ -24,6 +26,8 @@ except ImportError:
     import fr_en
     from hugchat import hugchat
     from hugchat.login import Login
+    import platform
+    import ctypes
 
 print(Fore.LIGHTCYAN_EX + """$$\   $$\                     $$\                               
 $$$\  $$ |                    $$ |                              
@@ -32,8 +36,21 @@ $$ $$\$$ |$$ |  $$ |$$  _____|$$ |$$  __$$\  \____$$\ $$  __$$\
 $$ \$$$$ |$$ |  $$ |$$ /      $$ |$$$$$$$$ | $$$$$$$ |$$ |  \__|
 $$ |\$$$ |$$ |  $$ |$$ |      $$ |$$   ____|$$  __$$ |$$ |      
 $$ | \$$ |\$$$$$$  |\$$$$$$$\ $$ |\$$$$$$$\ \$$$$$$$ |$$ |      
-\__|  \__| \______/  \_______|\__| \_______| \_______|\__|  v0.6   """, Style.RESET_ALL)
+\__|  \__| \______/  \_______|\__| \_______| \_______|\__|  v0.7   """, Style.RESET_ALL)
 
+
+
+def set_terminal_title(title):
+    system = platform.system()
+    if system == 'Windows':
+        ctypes.windll.kernel32.SetConsoleTitleW(title)
+    elif system == 'Darwin':
+        subprocess.run(['osascript', '-e', f'tell application "Terminal" to set custom title of front window to "{title}"'])
+    elif system == 'Linux':
+        sys.stdout.write(f"\x1b]2;{title}\x07")
+        sys.stdout.flush()
+
+set_terminal_title("| Nuclear SelfBot |")
 
 
 if config_selfbot.token == "":
