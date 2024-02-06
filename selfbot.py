@@ -250,7 +250,7 @@ async def voice(ctx):
     
 @bot.cmd(description="Snipe (all servers).")
 async def snipe(ctx):
-    await ctx.message.edit(f"🚮 __Last message deleted (all servers):__ `{bot.user.deleted_messages[-1].author}`: {bot.user.deleted_messages[-1]}")
+    await ctx.message.edit(f"🚮 __Last message deleted:__ `{bot.user.deleted_messages[-1].author}`: {bot.user.deleted_messages[-1]}")
 
 #############
 
