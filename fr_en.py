@@ -37,6 +37,20 @@ ready_text_two = {
     "en": "started in"
 }
 
+error_check_version_one = {
+    "fr": "Une nouvelle version",
+    "en": "A new version"
+}
+
+error_check_version_two = {
+    "fr": "est disponible:",
+    "en": "is out at:"
+}
+
+error_check_version_three = {
+    "fr": "Vous utilisez actuellement la version",
+    "en": "You are currently using"
+}
 
 ####################
 #  help            #

@@ -70,6 +70,33 @@ en: English""")
    config_selfbot.lang = input("fr / en: ")
 
 
+def check_latest_version(repo_owner, repo_name):
+    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/releases/latest"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        release_info = response.json()
+        latest_version = release_info['tag_name']
+        return latest_version
+    else:
+        return None
+
+def call_check_repo():
+    global nuclear_version
+    repo_owner = "Sitois"
+    repo_name = "Nuclear"
+    current_version = nuclear_version
+    
+    latest_version = check_latest_version(repo_owner, repo_name)
+    if latest_version:
+        if not latest_version == current_version:
+            print(Fore.BLUE, "[INFO]", f"{fr_en.error_check_version_one[config_selfbot.lang]} ({latest_version}) {fr_en.error_check_version_two[config_selfbot.lang]} https://github.com/Sitois/Nuclear/releases/tag/{latest_version}")
+            print(f" {fr_en.error_check_version_three[config_selfbot.lang]} {current_version}", Style.RESET_ALL)
+
+try:
+    call_check_repo()
+except Exception as e:
+    print(f"Error while trying to check the last Nuclear version: {e}")
 
 print(Fore.LIGHTYELLOW_EX, "[#]", Fore.YELLOW, fr_en.start_text[config_selfbot.lang], Style.RESET_ALL)
 
