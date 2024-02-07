@@ -50,7 +50,10 @@ def set_terminal_title(title):
         sys.stdout.write(f"\x1b]2;{title}\x07")
         sys.stdout.flush()
 
-set_terminal_title("| Nuclear SelfBot |")
+try:
+   set_terminal_title("| Nuclear SelfBot |")
+except Exception as e:
+   print(f"Error while trying to change the terminal name: {e}")
 
 
 if config_selfbot.token == "":
