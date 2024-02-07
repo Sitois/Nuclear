@@ -13,6 +13,7 @@ try:
     from hugchat.login import Login
     import platform
     import ctypes
+    import os
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", '-r' , 'requirements.txt'])
     import sys
@@ -28,6 +29,9 @@ except ImportError:
     from hugchat.login import Login
     import platform
     import ctypes
+    import os
+
+os.system('cls' if os.name == 'nt' else 'clear')
 
 print(Fore.LIGHTCYAN_EX + """$$\   $$\                     $$\                               
 $$$\  $$ |                    $$ |                              
