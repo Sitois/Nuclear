@@ -14,6 +14,7 @@ try:
     import platform
     import ctypes
     import os
+    import rpc
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", '-r' , 'requirements.txt'])
     import sys
@@ -30,6 +31,7 @@ except ImportError:
     import platform
     import ctypes
     import os
+    import rpc
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -118,19 +120,21 @@ deltime = config_selfbot.deltime
 deltime_ai = config_selfbot.deltime_ai
 
 
-activity_name = config_selfbot.activity_name
-activity_details = config_selfbot.activity_details
-activity_state = config_selfbot.activity_state
-status_activity = config_selfbot.status_activity
+
+
+activity_name = rpc.read_variable_json("activity_name")
+activity_details = rpc.read_variable_json("activity_details")
+activity_state = rpc.read_variable_json("activity_state")
+status_activity = rpc.read_variable_json("status_activity")
 afk = config_selfbot.afk
 
-streaming_url = config_selfbot.streaming_url
-activity_button_one = config_selfbot.activity_button_one
-activity_button_one_answer = config_selfbot.activity_button_one_answer
-activity_button_two = config_selfbot.activity_button_two
-activity_button_two_answer = config_selfbot.activity_button_two_answer
-image_key = config_selfbot.image_key
-application_id = config_selfbot.application_id
+streaming_url = rpc.read_variable_json("streaming_url")
+activity_button_one = rpc.read_variable_json("activity_button_one")
+activity_button_one_answer = rpc.read_variable_json("activity_button_one_answer")
+activity_button_two = rpc.read_variable_json("activity_button_two")
+activity_button_two_answer = rpc.read_variable_json("activity_button_two_answer")
+image_key = rpc.read_variable_json("image_key")
+application_id = config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
 #################
 
 is_spamming = False
@@ -216,7 +220,7 @@ bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
 async def ready(time):
     print(Fore.RED, "[+]", Fore.LIGHTRED_EX, f"{fr_en.ready_text[config_selfbot.lang]} @{bot.user.name} ({bot.user.id}), {fr_en.ready_text_two[config_selfbot.lang]} {time:0.2f} seconds.", Style.RESET_ALL)
     print(Fore.MAGENTA + " ------------------", Style.RESET_ALL)
-    await bot.change_presence(status=status_activity, afk=afk, activity=selfcord.Activity.Game(name=activity_name, details=activity_details, state=activity_state, buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, key=image_key, application_id=application_id))
+    await bot.change_presence(status=config_selfbot.status_activity, afk=config_selfbot.afk, activity=selfcord.Activity.Game(name=config_selfbot.activity_name, details=config_selfbot.activity_details, state=config_selfbot.activity_state, buttons={config_selfbot.activity_button_one: config_selfbot.activity_button_one_answer, config_selfbot.activity_button_two: config_selfbot.activity_button_two_answer}, key=config_selfbot.image_key, application_id=config_selfbot.application_id))
 
 
 #############
@@ -807,14 +811,14 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "reset":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🔄️ RPC Reset.")
@@ -831,61 +835,64 @@ async def use(ctx):
 
 
 
-@bot.cmd(description='set rpc')
+@bot.cmd()
 async def rpc_details(ctx):
     message_split = ctx.message.content.split()
-    activity_details = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_details", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state,  
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Details: `{activity_details}`")
+    msg = await ctx.message.edit(f"🕹️| Details: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_name(ctx):
     message_split = ctx.message.content.split()
-    activity_name = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_name", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Name: `{activity_name}`")
+    msg = await ctx.message.edit(f"🕹️| Name: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_state(ctx):
     message_split = ctx.message.content.split()
-    activity_state = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
-                              afk=afk,
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_state", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+                              afk=afk, 
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| State: `{activity_state}`")
+    msg = await ctx.message.edit(f"🕹️| State: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -894,18 +901,19 @@ async def rpc_state(ctx):
 @bot.cmd(description='set rpc title')
 async def rpc_url(ctx):
     message_split = ctx.message.content.split()
-    streaming_url = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("streaming_url", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Stream URL: `{streaming_url}`")
+    msg = await ctx.message.edit(f"🕹️| Stream URL: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -914,18 +922,19 @@ async def rpc_url(ctx):
 @bot.cmd(description='set rpc title')
 async def rpc_image(ctx):
     message_split = ctx.message.content.split()
-    image_key = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("image_key", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Image: `{image_key}`")
+    msg = await ctx.message.edit(f"🕹️| Image: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -934,118 +943,124 @@ async def rpc_image(ctx):
 @bot.cmd(description='set rpc title')
 async def rpc_application_id(ctx):
     message_split = ctx.message.content.split()
-    application_id = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("application_id", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Application ID: `{application_id}`")
+    msg = await ctx.message.edit(f"🕹️| Application ID: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_button_text_one(ctx):
     message_split = ctx.message.content.split()
-    activity_button_one = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_button_one", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Button One Text: `{activity_button_one}`")
+    msg = await ctx.message.edit(f"🕹️| Button One Text: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_button_text_two(ctx):
     message_split = ctx.message.content.split()
-    activity_button_two = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_button_two", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️|Button Text Two: `{activity_button_two}`")
+    msg = await ctx.message.edit(f"🕹️|Button Text Two: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_button_link_one(ctx):
     message_split = ctx.message.content.split()
-    activity_button_one_answer = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_button_one_answer", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Button One Link: `{activity_button_one_answer}`")
+    msg = await ctx.message.edit(f"🕹️| Button One Link: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_button_link_two(ctx):
     message_split = ctx.message.content.split()
-    activity_button_two_answer = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("activity_button_two_answer", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| Button Link Two: `{activity_button_two_answer}`")
+    msg = await ctx.message.edit(f"🕹️| Button Link Two: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_status(ctx):
     message_split = ctx.message.content.split()
-    status_activity = ctx.message.content.replace(f"{message_split[0]} ", "")
-    await bot.change_presence(status=status_activity, 
+    message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
+    rpc.edit_variable_json("status_activity", message_content)
+    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name=activity_name, 
-                                                                details=activity_details, 
-                                                                state=activity_state, 
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
-                                                                key=image_key, 
-                                                                application_id=application_id
+                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
+                                                                details=rpc.read_variable_json("activity_details"), 
+                                                                state=rpc.read_variable_json("activity_state"),  
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
+                                                                key=rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
-    msg = await ctx.message.edit(f"🕹️| RPC Status: `{status_activity}`")
+    msg = await ctx.message.edit(f"🕹️| RPC Status: `{message_content}`")
     await asyncio.sleep(deltime)
     await msg.delete()
 
