@@ -196,6 +196,20 @@ good_person_list =[
 ]
 
 
+def fix_ai_character(texte, encodage_source="utf-8", encodage_destination="utf-8"):
+    try:
+
+        if any(ord(char) > 127 for char in texte):
+            texte_correct = texte.encode(encodage_source, errors="ignore").decode(encodage_destination)
+            return texte_correct
+        else:
+            return texte
+    except Exception as e:
+        print(f"Erreur lors de la correction de l'encodage : {e}")
+        return None
+
+
+
 bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
 
 @bot.on("ready")
@@ -310,8 +324,9 @@ async def ai(ctx):
     ai_ask = content
     await ctx.message.edit(f"⌚ {fr_en.ai_wait[config_selfbot.lang]}...")
     query_result = chatbot.query(f"Question: {ai_ask}. You MUST answer entirely in {config_selfbot.language_ai} with a maximum of 1800 characters. You MUST anwser normally to the question (without specifying the characters limit.)")
+    fixed_answer = fix_ai_character(str(query_result), encodage_source="iso-8859-1")
     msg = await ctx.message.edit( f"""❓| Question: {ai_ask}
-✅| {fr_en.ai_response[config_selfbot.lang]}: {query_result}""")
+✅| {fr_en.ai_response[config_selfbot.lang]}: {fixed_answer}""")
     await asyncio.sleep(deltime_ai)
     await msg.delete()
 
