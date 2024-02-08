@@ -205,7 +205,7 @@ def fix_ai_character(texte, encodage_source="utf-8", encodage_destination="utf-8
         else:
             return texte
     except Exception as e:
-        print(f"Erreur lors de la correction de l'encodage : {e}")
+        print(f"Error while trying to correct the AI text: {e}")
         return None
 
 
