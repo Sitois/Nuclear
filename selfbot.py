@@ -15,6 +15,7 @@ try:
     import ctypes
     import os
     import rpc
+    import time
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", '-r' , 'requirements.txt'])
     import sys
@@ -32,10 +33,11 @@ except ImportError:
     import ctypes
     import os
     import rpc
+    import time
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-nuclear_version = "v0.7.1"
+nuclear_version = "v0.8"
 
 print(Fore.LIGHTCYAN_EX + f"""$$\   $$\                     $$\                               
 $$$\  $$ |                    $$ |                              
@@ -72,6 +74,12 @@ if config_selfbot.lang == "":
 fr: Français
 en: English""")
    config_selfbot.lang = input("fr / en: ")
+
+if config_selfbot.prefix == "":
+   config_selfbot.prefix = input(f"Prefix: ")
+
+if config_selfbot.selfbot_name == "":
+   config_selfbot.selfbot_name = input(f"SelfBot name: ")
 
 
 def check_latest_version(repo_owner, repo_name):
@@ -121,21 +129,10 @@ deltime_ai = config_selfbot.deltime_ai
 
 
 
-
-activity_name = rpc.read_variable_json("activity_name")
-activity_details = rpc.read_variable_json("activity_details")
-activity_state = rpc.read_variable_json("activity_state")
-status_activity = rpc.read_variable_json("status_activity")
 afk = config_selfbot.afk
-
-streaming_url = rpc.read_variable_json("streaming_url")
-activity_button_one = rpc.read_variable_json("activity_button_one")
-activity_button_one_answer = rpc.read_variable_json("activity_button_one_answer")
-activity_button_two = rpc.read_variable_json("activity_button_two")
-activity_button_two_answer = rpc.read_variable_json("activity_button_two_answer")
-image_key = rpc.read_variable_json("image_key")
-application_id = config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
 #################
+
+
 
 is_spamming = False
 
@@ -183,35 +180,16 @@ poetry = {
 }
 
 
-good_person_list =[
-   "GeForce RTX 4000",
-   "🍗",
-   "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
-   "AMD Ryzen™ 9 7900",
-   "Intel Core ",
-   "🐈",
-   "🍟",
-   "yipeeeeeeeee",
-   "😍",
-   "🌠",
-   "u r beautiful",
-   "you are all very intelligent",
-   "excuse me"
-]
 
 
-def fix_ai_character(texte, encodage_source="utf-8", encodage_destination="utf-8"):
-    try:
 
-        if any(ord(char) > 127 for char in texte):
-            texte_correct = texte.encode(encodage_source, errors="ignore").decode(encodage_destination)
-            return texte_correct
-        else:
-            return texte
-    except Exception as e:
-        print(f"Error while trying to correct the AI text: {e}")
-        return None
 
+
+
+####################
+#  start           #
+#   setup     !!!  #
+####################
 
 
 bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
@@ -242,7 +220,8 @@ async def help(ctx):
   🏮| __**General:**__ `{config_selfbot.prefix}general`
   🎤| __**{fr_en.help_voice[config_selfbot.lang]}:**__ `{config_selfbot.prefix}voice`
   🕹️| __**Rich Presence:**__ `{config_selfbot.prefix}presence`
-  🎲| __**Fun:**__ `{config_selfbot.prefix}fun`""")
+  🎲| __**Fun:**__ `{config_selfbot.prefix}fun`
+  ⚙️| __**Config:**__ `{config_selfbot.prefix}config`""")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -254,9 +233,22 @@ async def fun(ctx):
 
 🎲| __**Fun:**__
  `{config_selfbot.prefix}cat`: {fr_en.help_fun_cat[config_selfbot.lang]}.
- `{config_selfbot.prefix}good`: {fr_en.help_fun_good[config_selfbot.lang]} 🐈.
+ `{config_selfbot.prefix}good`: {fr_en.help_fun_good[config_selfbot.lang]}.
  `{config_selfbot.prefix}call`: {fr_en.help_fun_call[config_selfbot.lang]}.
  `{config_selfbot.prefix}gift`: {fr_en.help_fun_gift[config_selfbot.lang]}.""")
+    await asyncio.sleep(deltime)
+    await msg.delete()
+
+#############
+
+@bot.cmd()
+async def config(ctx):
+    msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
+
+⚙️| __**Config:**__
+ `{config_selfbot.prefix}nitrosniper`: {fr_en.help_general_sniper[config_selfbot.lang]}.
+ `{config_selfbot.prefix}restart`: {fr_en.help_config_restart[config_selfbot.lang]}.
+ `{config_selfbot.prefix}stop`: {fr_en.help_config_stop[config_selfbot.lang]}.""")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -270,7 +262,6 @@ async def general(ctx):
  `{config_selfbot.prefix}snipe`: Snipe {fr_en.help_general_snipe[config_selfbot.lang]}.
  `{config_selfbot.prefix}hype / {config_selfbot.prefix}squad`: {fr_en.help_general_hype[config_selfbot.lang]} (bravery, brilliance, balance).
  `{config_selfbot.prefix}ping / {config_selfbot.prefix}latency`: {fr_en.help_general_ping[config_selfbot.lang]}.
- `{config_selfbot.prefix}nitrosniper`: {fr_en.help_general_sniper[config_selfbot.lang]}.
  `{config_selfbot.prefix}flood`: Flood.
  `{config_selfbot.prefix}bio`: {fr_en.help_general_bio[config_selfbot.lang]}.
  `{config_selfbot.prefix}spam`: Spam. (`{config_selfbot.prefix}spam` 2 hello)
@@ -316,23 +307,61 @@ async def hype(ctx):
      await msg.delete()
 
 #############
+
+def restart_selfbot():
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
+
+@bot.cmd()
+async def restart(ctx):
+    msg = await ctx.message.edit(fr_en.restart_command[config_selfbot.lang])
+    time.sleep(2)
+    await msg.delete()
+    restart_selfbot()
+
+#############
+    
+@bot.cmd()
+async def stop(ctx):
+    await ctx.message.edit(fr_en.stop_command[config_selfbot.lang])
+    exit()
+
+#############
      
+def fix_ai_character(texte, encodage_source="utf-8", encodage_destination="utf-8"):
+    try:
+
+        if any(ord(char) > 127 for char in texte):
+            texte_correct = texte.encode(encodage_source, errors="ignore").decode(encodage_destination)
+            return texte_correct
+        else:
+            return texte
+    except Exception as e:
+        print(f"Error while trying to correct the AI text: {e}")
+        return None
+
+
 @bot.cmd()
 async def ai(ctx):
     message_split = ctx.message.content.split()
     content = ctx.message.content.replace(f"{message_split[0]} ", "")
-    # AI CONFIGURATION
-    sign = Login(config_selfbot.hug_chat_email, config_selfbot.hug_chat_password)
-    cookies = sign.login()
-    chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
-    ai_ask = content
-    await ctx.message.edit(f"⌚ {fr_en.ai_wait[config_selfbot.lang]}...")
-    query_result = chatbot.query(f"Question: {ai_ask}. You MUST answer entirely in {config_selfbot.language_ai} with a maximum of 1800 characters. You MUST anwser normally to the question (without specifying the characters limit.)")
-    fixed_answer = fix_ai_character(str(query_result), encodage_source="iso-8859-1")
-    msg = await ctx.message.edit( f"""❓| Question: {ai_ask}
+    if not config_selfbot.hug_chat_password == "" and not config_selfbot.hug_chat_email == "":
+       # AI CONFIGURATION
+      sign = Login(config_selfbot.hug_chat_email, config_selfbot.hug_chat_password)
+      cookies = sign.login()
+      chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
+      ai_ask = content
+      await ctx.message.edit(f"⌚ {fr_en.ai_wait[config_selfbot.lang]}...")
+      query_result = chatbot.query(f"Question: {ai_ask}. You MUST answer entirely in {config_selfbot.language_ai} with a maximum of 1800 characters. You MUST anwser normally to the question (without specifying the characters limit.)")
+      fixed_answer = fix_ai_character(str(query_result), encodage_source="iso-8859-1")
+      msg = await ctx.message.edit( f"""❓| Question: {ai_ask}
 ✅| {fr_en.ai_response[config_selfbot.lang]}: {fixed_answer}""")
-    await asyncio.sleep(deltime_ai)
-    await msg.delete()
+      await asyncio.sleep(deltime_ai)
+      await msg.delete()
+    else:
+       msg = await ctx.message.edit(fr_en.ai_error[config_selfbot.lang])
+       await asyncio.sleep(deltime)
+       await msg.delete()
 
 #############
 
@@ -519,6 +548,23 @@ async def call(ctx):
 
 #############
 
+good_person_list =[
+   "GeForce RTX 4000",
+   "🍗",
+   "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.",
+   "AMD Ryzen™ 9 7900",
+   "Intel Core ",
+   "🐈",
+   "🍟",
+   "yipeeeeeeeee",
+   "😍",
+   "🌠",
+   "u r beautiful",
+   "you are all very intelligent",
+   "excuse me"
+]
+
+
 @bot.cmd()
 async def good(ctx):
     global good_person
@@ -625,6 +671,7 @@ async def template(ctx):
 📖| __**Templates:**__
  `{config_selfbot.prefix}use`:
  "reset": {fr_en.template_help_reset[config_selfbot.lang]}
+ "default": {fr_en.template_help_default[config_selfbot.lang]}
  "hi": {fr_en.template_help_hi[config_selfbot.lang]}
  "webdeck": {fr_en.template_help_webdeck[config_selfbot.lang]}
  "omori": {fr_en.template_help_omori[config_selfbot.lang]}
@@ -656,155 +703,155 @@ async def tuto(ctx):
 async def use(ctx):
     choice = ctx.message.content.split()[1]
     if choice.lower() == "hi":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Hi !", 
                                                                 details="hi !!!!!!", 
                                                                 state=None,
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1194342119989575832/MGflOC7.jpg?ex=65b93b47&is=65a6c647&hm=af5387b219eb9f9bf4cf7137758c4fad9da45a174305655ccb84c977a38dcd9f&=&format=webp&width=744&height=419",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"👋 Template \"hi !\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "omori":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Omori", 
                                                                 details="In Game", 
                                                                 state="Fighting a boss.",
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1177984303456604253/i9ja3eA.gif?ex=65b517df&is=65a2a2df&hm=ba4d90afb6d6f47adceb1dbdc8ae28435c20a0fc46dd52cd3b492b427d356987&=&width=559&height=419",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"💡 Template \"Omori\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "cod":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk,
                               activity=selfcord.Activity.Game(name="Call Of Duty: MWIII", 
                                                                 details=f"{fr_en.rpc_cod_details[config_selfbot.lang]}", 
                                                                 state=f"{fr_en.rpc_cod_state[config_selfbot.lang]}",
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1199007140782813284/5rr7SXS.png?ex=65c0f96a&is=65ae846a&hm=f92e8757ce026cb26fc3d6e44e2e9e02ccb2577e9f047e62f9891c0f5925c725&=&format=webp&quality=lossless",
-                                                                application_id=application_id,
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🔫 Template \"Call Of Duty\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "youtube":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk,
                               activity=selfcord.Activity.Watch(name="Youtube", 
                                                                 details="Watching Videos", 
                                                                 state=None,
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1197991793111863417/ILAO8CE.png?ex=65bd47cd&is=65aad2cd&hm=585fcd20ef938d1a7637732d5d251cba50c82024c980c5b1e785bb486e4c5f4a&=&format=webp&quality=lossless&width=419&height=419",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🎦 Template \"YouTube\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "car":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"), 
                               afk=afk, 
                               activity=selfcord.Activity.Watch(name="Drift Car", 
                                                                 details="Watching DriftCar", 
                                                                 state=None,
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198216462536552468/Wy5D92g.gif?ex=65be190a&is=65aba40a&hm=ee3adfbaccfb4a72ef71196d5b675aaef7df29a6f92f6841e4b161ed989aa783&=",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🏎️ Template \"Car\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "js":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Visual Studio Code", 
                                                                 details=f"Editing {bot.user.name}.js (273 lines)", 
                                                                 state="Workspace: Nuclear",
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198623222678179960/FYcrOR1.png?ex=65bf93dd&is=65ad1edd&hm=196ea799818a84abed3db5089be49eb2f470fe31e9ed5d984bfb6b898c868a4a&=&format=webp&quality=lossless",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"👨‍💻 Template \"JavaScript\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "python":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Visual Studio Code", 
                                                                 details=f"Editing {bot.user.name}.py", 
                                                                 state="Workspace: Nuclear",
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer}, 
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198617576553599057/3jMZG0a.png?ex=65bf8e9b&is=65ad199b&hm=d61ea94e9db57f790e49dab09a9390bd61e5362a14cd44738a9a2e8aa70092d0&=&format=webp&quality=lossless",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"👨‍💻 Template \"Python\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "webdeck":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk,
                               activity=selfcord.Activity.Game(name="WebDeck", 
                                                                 details="Watching stars on GitHub...", 
                                                                 state="Playing with Free StreamDeck.",
                                                                 buttons={"Webdeck's GitHub (star it)": "https://github.com/Lenochxd/WebDeck", "WebDeck's Discord server": "https://discord.com/invite/CK2mu4P"},
                                                                 key="mp:attachments/1135264530188992562/1197999417853218927/jj0PYp2.png?ex=65bd4ee6&is=65aad9e6&hm=ef2a47c5023678209436c74e3067469cf5c28143e5c12a3f714746fd03f1321e&=&format=webp&quality=lossless",
-                                                                application_id=application_id
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"📱 Template \"WebDeck\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "self":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Stream(name="click mee", 
                                                                 details="Nuclear $B", 
                                                                 state="Free $B",
                                                                 buttons={"Nuclear $B": "https://github.com/Sitois/Nuclear", "star it !": "https://github.com/Sitois/Nuclear"},
                                                                 key="mp:attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless",
-                                                                application_id=application_id,
-                                                                url=streaming_url
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id"),
+                                                                url=rpc.read_variable_json("streaming_url")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🌌 Template \"Nuclear\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "dark":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="to a game.", 
                                                                 details="Life.", 
                                                                 state=None,
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198250065970606210/0RoaYys.gif?ex=65be3856&is=65abc356&hm=39b3c558a1adb1b03ffa16c2ad8ff5b7ae7afedb3539db772fc0ee26c504fc8f&=",
-                                                                application_id=application_id,
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🖤 Template \"Dark\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "gta":
-     await bot.change_presence(status=status_activity, 
+     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Grand Theft Auto VI", 
                                                                 details="Welcome to Vice City !", 
                                                                 state="Playing SinglePlayer",
-                                                                buttons={activity_button_one: activity_button_one_answer, activity_button_two: activity_button_two_answer},
+                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1200905385230475424/rhqvEdX.png?ex=65c7e14b&is=65b56c4b&hm=b375f98036eb15cedb369aff743ab040585f4777cc3756530e936fd5bbbb98d4&=&format=webp&quality=lossless&width=417&height=419",
-                                                                application_id=application_id,
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🔫 Template \"Grand Theft Auto VI\".")
@@ -822,6 +869,20 @@ async def use(ctx):
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🔄️ RPC Reset.")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "default":
+     await bot.change_presence(status=config_selfbot.status_activity,
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name, 
+                                                                details=config_selfbot.activity_details,
+                                                                state=config_selfbot.activity_state,
+                                                                buttons={config_selfbot.activity_button_one: config_selfbot.activity_button_one_answer, config_selfbot.activity_button_two: config_selfbot.activity_button_two_answer},
+                                                                key=config_selfbot.image_key,
+                                                                application_id=config_selfbot.application_id
+                                                                )
+                                                                )
+     msg = await ctx.message.edit(f"🔄️ RPC \"Default\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     else:

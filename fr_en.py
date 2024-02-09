@@ -84,6 +84,16 @@ help_general_sniper = {
     "en": "Enable / disable NitroSniper"
 }
 
+help_config_restart = {
+    "fr": "Redémarre le SelfBot (peut régler un bug)",
+    "en": "Restart the SelfBot. (it can fix a bug)"
+}
+
+help_config_stop = {
+    "fr": "Stop le SelfBot",
+    "en": "Stop the SelfBot"
+}
+
 help_general_bio = {
     "fr": "Change la biographie du compte",
     "en": "Change account's bio"
@@ -111,8 +121,8 @@ help_voice_leave = {
 }
 
 help_fun_cat = {
-    "fr": "Chat mignon😻😻",
-    "en": "Cute cat😻😻"
+    "fr": "Chat mignon 🐈",
+    "en": "Cute cat 🐈"
 }
 
 help_fun_good = {
@@ -136,6 +146,16 @@ help_fun_gift = {
 # translation !!!  #
 ####################
 
+restart_command = {
+    "fr": "✅ Le SelfBot a bien été redémarré (patientez quelques secondes...) !",
+    "en": "✅ Succesfully restarted the SelfBot (wait a couple of seconds...)!"
+}
+
+stop_command = {
+    "fr": "⭕ Le SelfBot a bien été stopper.",
+    "en": "⭕ Succesfully stopped the SelfBot."
+}
+
 ai_response = {
     "fr": "Réponse",
     "en": "Answer"
@@ -152,8 +172,8 @@ ai_help = {
 }
 
 ai_error = {
-    "fr": "Vous devez configurer l'e-mail et le mot de passe dans ``config_selfbot.py`` !",
-    "en": "You must configure e-mail and password in ``config_selfbot.py``!"
+    "fr": "❌ Vous devez configurer l'e-mail et le mot de passe dans ``config_selfbot.py`` !",
+    "en": "❌ You must configure e-mail and password in ``config_selfbot.py``!"
 }
 
 leave_voice = {
@@ -177,8 +197,8 @@ bio_command = {
 }
 
 spam_cooldown = {
-    "fr": f"❌ Un spam est déjà en cours !",
-    "en": f"❌ A spam is already active!"
+    "fr": f"❌ Un spam est déjà en cours ! Pour l'arrêter, faites `{config_selfbot.prefix}restart`.",
+    "en": f"❌ A spam is already active! To spam the current spam, do `{config_selfbot.prefix}restart`."
 }
 
 spam_invalid = {
@@ -243,8 +263,8 @@ rpc_state_translate = {
 }
 
 rpc_url_translate = {
-    "fr": "Défini l'url de steaming du RPC (https://twitch.tv/nom)",
-    "en": "Set RPC's streaming URL (https://twitch.tv/name)"
+    "fr": "Défini l'url de steaming du RPC ``(https://twitch.tv/nom)``",
+    "en": "Set RPC's streaming URL ``(https://twitch.tv/name)``"
 }
 
 rpc_id_translate = {
@@ -288,6 +308,11 @@ rpc_button_link_two_translate = {
 template_help_reset = {
     "fr": "Réinitialise votre RPC.",
     "en": "Reset your RPC."
+}
+
+template_help_default = {
+    "fr": "Modifie votre RPC par défaut (`config_selfbot.py`).",
+    "en": "Edit your RPC to default (`config_selfbot.py`)."
 }
 
 template_help_cod = {
