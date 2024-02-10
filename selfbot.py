@@ -323,7 +323,9 @@ async def restart(ctx):
     
 @bot.cmd()
 async def stop(ctx):
-    await ctx.message.edit(fr_en.stop_command[config_selfbot.lang])
+    msg = await ctx.message.edit(fr_en.stop_command[config_selfbot.lang])
+    time.sleep(2)
+    await msg.delete()
     exit()
 
 #############
