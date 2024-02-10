@@ -15,7 +15,15 @@ disable = {
     "en": "disabled"
 }
 
+empty = {
+    "fr": "Aucune",
+    "en": "Empty"
+}
 
+author = {
+    "fr": "Auteur",
+    "en": "Author"
+}
 
 ####################
 #  launch          #
@@ -64,10 +72,6 @@ help_voice = {
     "en": "Voice"
 }
 
-help_general_snipe = {
-    "fr": "(tout les serveurs)",
-    "en": "(all servers)"
-}
 
 help_general_hype = {
     "fr": "Défini votre badge HypeSquad",
@@ -82,6 +86,11 @@ help_general_ping = {
 help_general_sniper = {
     "fr": "Active / désactive le NitroSniper",
     "en": "Enable / disable NitroSniper"
+}
+
+error_no_message_snipe = {
+    "fr": "❌ Aucun message supprimé récemment dans ce salon !",
+    "en": "❌ No message deleted recently in this channel!"
 }
 
 help_config_restart = {
@@ -152,7 +161,7 @@ restart_command = {
 }
 
 stop_command = {
-    "fr": "⭕ Le SelfBot a bien été stopper.",
+    "fr": "⭕ Le SelfBot a bien été stoppé.",
     "en": "⭕ Succesfully stopped the SelfBot."
 }
 

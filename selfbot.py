@@ -259,7 +259,7 @@ async def general(ctx):
     msg = await ctx.message.edit(f"""☄ __**{config_selfbot.selfbot_name} :**__ ☄
 
 🏮| __**GENERAL:**__
- `{config_selfbot.prefix}snipe`: Snipe {fr_en.help_general_snipe[config_selfbot.lang]}.
+ `{config_selfbot.prefix}snipe`: Snipe.
  `{config_selfbot.prefix}hype / {config_selfbot.prefix}squad`: {fr_en.help_general_hype[config_selfbot.lang]} (bravery, brilliance, balance).
  `{config_selfbot.prefix}ping / {config_selfbot.prefix}latency`: {fr_en.help_general_ping[config_selfbot.lang]}.
  `{config_selfbot.prefix}flood`: Flood.
@@ -292,10 +292,36 @@ async def voice(ctx):
 #  general         #
 #   command   !!!  #
 ####################
-    
-@bot.cmd(description="Snipe (all servers).")
+
+sniped_messages = {}
+
+@bot.on("message_delete")
+async def message_logger(message):
+    global sniped_messages
+    sniped_messages[message.channel.id] = {
+        'author': message.author,
+        'content': message.content,
+        'image': message.attachments[0].url if message.attachments else fr_en.empty[config_selfbot.lang]
+    }
+
+@bot.cmd()
 async def snipe(ctx):
-    await ctx.message.edit(f"🚮 __Last message deleted:__ `{bot.user.deleted_messages[-1].author}`: {bot.user.deleted_messages[-1]}")
+    global sniped_messages
+    sniped_message = sniped_messages.get(ctx.channel.id)
+    if sniped_message:
+        msg = await ctx.message.edit(f"""__**🔫 Sniper:**__
+
+🗣️ {fr_en.author[config_selfbot.lang]}: {sniped_message['author']}
+📩 Message: {sniped_message['content']}
+🖼️ Image: {sniped_message['image']}""")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+    else:
+        msg = await ctx.message.edit(fr_en.error_no_message_snipe[config_selfbot.lang])
+        await asyncio.sleep(deltime)
+        await msg.delete()
+
+#############
 
 #############
 
