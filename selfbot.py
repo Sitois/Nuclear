@@ -1,39 +1,39 @@
 import subprocess
 try:
     import sys
-    import config_selfbot
+    import os
     import random
     import asyncio
-    from colorama import Fore, Style, Back
-    import selfcord
-    import requests
     import json
-    import fr_en
-    from hugchat import hugchat
-    from hugchat.login import Login
     import platform
     import ctypes
-    import os
-    import rpc
     import time
+    import config_selfbot
+    import fr_en
+    import rpc
+    from colorama import Fore, Style, Back
+    import requests
+    import selfcord
+    from hugchat import hugchat
+    from hugchat.login import Login
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", '-r' , 'requirements.txt'])
     import sys
-    import config_selfbot
+    import os
     import random
     import asyncio
-    from colorama import Fore, Style, Back
-    import selfcord
-    import requests
     import json
-    import fr_en
-    from hugchat import hugchat
-    from hugchat.login import Login
     import platform
     import ctypes
-    import os
-    import rpc
     import time
+    import config_selfbot
+    import fr_en
+    import rpc
+    from colorama import Fore, Style, Back
+    import requests
+    import selfcord
+    from hugchat import hugchat
+    from hugchat.login import Login
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
