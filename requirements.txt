@@ -1,4 +1,4 @@
-selfcord.py
+selfcord.py==0.2.4
 colorama
 requests
 hugchat
