@@ -67,6 +67,7 @@ console.log('%cWorked!', 'font-size: 50px');
 console.log(`%cYou now have your token in the clipboard!`, 'font-size: 16px');
 ```
 Now your token is in your clipboard.
+<br>
 4. Paste your token in `config_selfbot.py`
 <br>
 

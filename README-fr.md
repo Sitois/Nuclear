@@ -66,6 +66,7 @@ console.log('%cWorked!', 'font-size: 50px');
 console.log(`%cYou now have your token in the clipboard!`, 'font-size: 16px');
 ```
 Maintenant, votre token est dans votre presse-papier.
+<br>
 4. Collez votre token dans `config_selfbot.py`
 
 
