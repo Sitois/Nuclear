@@ -23,6 +23,7 @@
 
 1. Téléchargez la dernière version depuis la section [Releases](https://github.com/Sitois/Nuclear/releases) sur GitHub.
 2. Assurez-vous d'avoir [Python](https://www.python.org/downloads/ "Installez Python ici") installé.
+3. Ouvrez votre Terminal et rendez-vous dans le dossier Nuclear en utilisant `cd`.
 3. Installez les dépendances : `pip install -r requirements.txt`
 4. Exécutez le programme : `python selfbot.py`
 
@@ -31,11 +32,42 @@ Ouvrez `config_selfbot.py` avec n'importe quel éditeur de texte et saisissez un
 
 ## 🌟 Fonctionnalités
 * Templates RPC personnalisés,
+* Créez votre propre RPC,
 * Commandes vocal,
 * Nitro Sniper,
 * Commande IA,
 * Flood et Spam,
-* Et bien d'autres, consultez la commande `Help` !
+* Snipe,
+* Et bien plus, consultez la commande `Help` !
+
+## 📜 Comment obtenir son token
+1. Rendez-vous sur [Discord Web](https://discord.com/app)
+2. Faites ``CTRL + MAJ + I`` puis allez dans `Console`
+3. Collez ce code:
+```js
+window.webpackChunkdiscord_app.push([
+  [Math.random()],
+  {},
+  req => {
+    if (!req.c) return;
+    for (const m of Object.keys(req.c)
+      .map(x => req.c[x].exports)
+      .filter(x => x)) {
+      if (m.default && m.default.getToken !== undefined) {
+        return copy(m.default.getToken());
+      }
+      if (m.getToken !== undefined) {
+        return copy(m.getToken());
+      }
+    }
+  },
+]);
+console.log('%cWorked!', 'font-size: 50px');
+console.log(`%cYou now have your token in the clipboard!`, 'font-size: 16px');
+```
+Maintenant, votre token est dans votre presse-papier.
+4. Collez votre token dans `config_selfbot.py`
+
 
 ## ☣️ Problèmes
 Oui, le SelfBot peut se déconnecter sans raison, oui le SelfBot peut afficher des erreurs aléatoires: le problème vient de la librairie utilisé: selfcord.py.
@@ -45,7 +77,7 @@ Oui, le SelfBot peut se déconnecter sans raison, oui le SelfBot peut afficher d
 Soyez patient et attendez pour la sortie de la réecriture de la librairie.
 <br>
 Dès que la nouvelle version sort, Nuclear va migrer vers la nouvelle version.
-
+<br>
 
 ## ⭐ Contributeurs
 <table align="center">

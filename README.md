@@ -24,19 +24,51 @@
 
 1. Download the latest version from the [Releases](https://github.com/Sitois/Nuclear/releases) section on GitHub.
 2. Make sure to have [Python](https://www.python.org/downloads/ "Install Python here") installed.
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run the program: `python selfbot.py`
+3. Open your Terminal and go to Nuclear with `cd`.
+4. Install dependencies: `pip install -r requirements.txt`
+5. Run the program: `python selfbot.py`
 
 ## 🔧 Config
 Open `config_selfbot.py` with any text editor and make sure to enter a __user__ token.
 
 ## 🌟 Features
 * Custom RPC templates,
+* Build your own RPC,
 * Voice commands,
 * Nitro Sniper,
 * AI command,
 * Spam and Flood command,
+* Snipe command,
 * And others, check the `Help` command!
+
+## 📜 How to get a token
+1. Go to [Discord Web](https://discord.com/app)
+2. Do ``CTRL + MAJ + I`` and go to `Console`
+3. Paste this code:
+```js
+window.webpackChunkdiscord_app.push([
+  [Math.random()],
+  {},
+  req => {
+    if (!req.c) return;
+    for (const m of Object.keys(req.c)
+      .map(x => req.c[x].exports)
+      .filter(x => x)) {
+      if (m.default && m.default.getToken !== undefined) {
+        return copy(m.default.getToken());
+      }
+      if (m.getToken !== undefined) {
+        return copy(m.getToken());
+      }
+    }
+  },
+]);
+console.log('%cWorked!', 'font-size: 50px');
+console.log(`%cYou now have your token in the clipboard!`, 'font-size: 16px');
+```
+Now your token is in your clipboard.
+4. Paste your token in `config_selfbot.py`
+<br>
 
 
 ## ☣️ Issues
@@ -47,7 +79,7 @@ Yes, the SelfBot can disconnect withouth reason, yes the SelfBot can display ran
 Be patient and wait for the cretaor of selfcord.py to finish the rewrite.
 <br>
 As soon as the new rewrite come out, Nuclear will migrate to this version.
-
+<br>
 
 ## ⭐ Contributors
 <table align="center">
