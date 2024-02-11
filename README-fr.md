@@ -71,7 +71,7 @@ Maintenant, votre token est dans votre presse-papier.
 
 ## 👀 Aperçu
 <div align="center">
-  <img src="https://media.discordapp.net/attachments/1135264530188992562/1206252733976285215/Auobz9R.png?ex=65db5566&is=65c8e066&hm=5d4cb1541f60cd7890f7837c0212ed18dbab1af291fa8d783b6a12587c3dd0f7&=&format=webp&quality=lossless&width=742&height=419" alt="preview" width="" height="">
+  <img src="https://media.discordapp.net/attachments/1135264530188992562/1206262903427170334/FtTnNGY.png?ex=65db5edf&is=65c8e9df&hm=29286b2127bab0abf906413138924631942c5abb69d7b56cf506295ef5ed2234&=&format=webp&quality=lossless" alt="preview" width="" height="">
 </div>
 <br>
 <div align="center">
