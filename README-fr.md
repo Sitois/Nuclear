@@ -69,6 +69,16 @@ Maintenant, votre token est dans votre presse-papier.
 <br>
 4. Collez votre token dans `config_selfbot.py`
 
+## 👀 Aperçu
+<div align="center">
+  <img src="https://media.discordapp.net/attachments/1135264530188992562/1206252733976285215/Auobz9R.png?ex=65db5566&is=65c8e066&hm=5d4cb1541f60cd7890f7837c0212ed18dbab1af291fa8d783b6a12587c3dd0f7&=&format=webp&quality=lossless&width=742&height=419" alt="preview" width="" height="">
+</div>
+<br>
+<div align="center">
+  <img src="https://media.discordapp.net/attachments/1135264530188992562/1206253306360496259/EcJ09br.png?ex=65db55ef&is=65c8e0ef&hm=078cf750eb91ca80100bf59f478fbb3254647fd825a4d622b1a6d2af6b3a9912&=&format=webp&quality=lossless" alt="preview_second" width="" height="">
+</div>
+
+<br>
 
 ## ☣️ Problèmes
 Oui, le SelfBot peut se déconnecter sans raison, oui le SelfBot peut afficher des erreurs aléatoires: le problème vient de la librairie utilisé: selfcord.py.
