@@ -37,7 +37,7 @@ except ImportError:
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-nuclear_version = "v0.8"
+nuclear_version = "v0.8.1"
 
 print(Fore.LIGHTCYAN_EX + f"""$$\   $$\                     $$\                               
 $$$\  $$ |                    $$ |                              
@@ -192,6 +192,9 @@ poetry = {
 ####################
 
 
+
+
+
 bot = selfcord.Bot(prefixes=[config_selfbot.prefix], inbuilt_help=False)
 
 @bot.on("ready")
@@ -323,36 +326,12 @@ async def snipe(ctx):
 
 #############
 
-#############
-
 @bot.cmd(description="Change HypeSquad badge.", aliases=["squad"])
 async def hype(ctx):
      await bot.change_hypesquad(house=ctx.content.split()[1])
      msg = await ctx.message.edit(f"🪄 HypeSquad {fr_en.hype_command[config_selfbot.lang]} '{ctx.message.content.split()[1]}'")
      await asyncio.sleep(deltime)
      await msg.delete()
-
-#############
-
-def restart_selfbot():
-    python = sys.executable
-    os.execl(python, python, *sys.argv)
-
-@bot.cmd()
-async def restart(ctx):
-    msg = await ctx.message.edit(fr_en.restart_command[config_selfbot.lang])
-    time.sleep(2)
-    await msg.delete()
-    restart_selfbot()
-
-#############
-    
-@bot.cmd()
-async def stop(ctx):
-    msg = await ctx.message.edit(fr_en.stop_command[config_selfbot.lang])
-    time.sleep(2)
-    await msg.delete()
-    exit()
 
 #############
      
@@ -374,7 +353,6 @@ async def ai(ctx):
     message_split = ctx.message.content.split()
     content = ctx.message.content.replace(f"{message_split[0]} ", "")
     if not config_selfbot.hug_chat_password == "" and not config_selfbot.hug_chat_email == "":
-       # AI CONFIGURATION
       sign = Login(config_selfbot.hug_chat_email, config_selfbot.hug_chat_password)
       cookies = sign.login()
       chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
@@ -395,7 +373,7 @@ async def ai(ctx):
 
 @bot.cmd(description="Give the Ping.", aliases=["latency"])
 async def ping(ctx):
-    msg = await ctx.message.edit(f"🏓 Pong ! (Ping: **{bot.latency}**)")
+    msg = await ctx.message.edit(f"🏓 Pong ! (Ping: **{round(bot.latency * 1000)}ms**)")
     await asyncio.sleep(deltime)
     await msg.delete()
 
@@ -452,22 +430,6 @@ async def lang(ctx):
     elif config_selfbot.lang == "en":
         config_selfbot.lang = "fr"
         msg = await ctx.message.edit("🟢 Langue changé en **Français**.")
-        await asyncio.sleep(deltime)
-        await msg.delete()
-
-#############
-
-@bot.cmd(description="set nitro sniper")
-async def nitrosniper(ctx):
-    global nitro_sniper
-    if nitro_sniper == False:
-        nitro_sniper = True
-        msg = await ctx.message.edit("🟢 Nitro Sniper **On**.")
-        await asyncio.sleep(deltime)
-        await msg.delete()
-    elif nitro_sniper == True:
-        nitro_sniper = False
-        msg = await ctx.message.edit("🔴 Nitro Sniper **Off**.")
         await asyncio.sleep(deltime)
         await msg.delete()
 
@@ -658,7 +620,48 @@ async def gift(ctx):
     await ctx.message.edit(f"discord.gift/{random.choice(chiffres)}{random.choice(alphabet).upper()}{random.choice(alphabet).upper()}{random.choice(alphabet).upper()}{random.choice(alphabet)}{random.choice(alphabet)}{random.choice(alphabet)}{random.choice(chiffres)}{random.choice(alphabet).upper()}{random.choice(alphabet)}{random.choice(chiffres)}{random.choice(alphabet)}{random.choice(alphabet).upper()}{random.choice(alphabet).upper()}{random.choice(alphabet)}{random.choice(alphabet)}{random.choice(chiffres)}")
 
 
+####################
+#  setings         #
+#   command   !!!  #
+####################
 
+
+
+def restart_selfbot():
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
+
+@bot.cmd()
+async def restart(ctx):
+    msg = await ctx.message.edit(fr_en.restart_command[config_selfbot.lang])
+    time.sleep(2)
+    await msg.delete()
+    restart_selfbot()
+
+#############
+
+@bot.cmd()
+async def nitrosniper(ctx):
+    global nitro_sniper
+    if nitro_sniper == False:
+        nitro_sniper = True
+        msg = await ctx.message.edit("🟢 Nitro Sniper **On**.")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+    elif nitro_sniper == True:
+        nitro_sniper = False
+        msg = await ctx.message.edit("🔴 Nitro Sniper **Off**.")
+        await asyncio.sleep(deltime)
+        await msg.delete()
+
+#############
+    
+@bot.cmd()
+async def stop(ctx):
+    msg = await ctx.message.edit(fr_en.stop_command[config_selfbot.lang])
+    time.sleep(2)
+    await msg.delete()
+    exit()
 
 
 
@@ -860,11 +863,11 @@ async def use(ctx):
     elif choice.lower() == "dark":
      await bot.change_presence(status=rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name="to a game.", 
-                                                                details="Life.", 
+                              activity=selfcord.Activity.Game(name="☄", 
+                                                                details=None, 
                                                                 state=None,
                                                                 buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
-                                                                key="mp:attachments/1135264530188992562/1198250065970606210/0RoaYys.gif?ex=65be3856&is=65abc356&hm=39b3c558a1adb1b03ffa16c2ad8ff5b7ae7afedb3539db772fc0ee26c504fc8f&=",
+                                                                key="mp:attachments/1135264530188992562/1205872002238382111/PNjYcIL.png?ex=65d9f2d1&is=65c77dd1&hm=37a71d4fc6c032214d71c8d94d7d6f6c99f8f9773c467cf8f7cc4d56a618da73&=&format=webp&quality=lossless",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1252,5 +1255,7 @@ async def flood(ctx):
     
 try:
     bot.run(token)
+except selfcord.api.errors.LoginFailure:
+   print(f"Token Error. Please configure a valid token in config_selfbot.py\n( Error Message: {e} )")
 except Exception as e:
-    print(f"Maybe a Token Error. Error Message: {e}")
+    print(f"Maybe Config Error. Make sure all information in config_selfbot.py are correct.\n( Error Message: {e} )")
