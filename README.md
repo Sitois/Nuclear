@@ -81,6 +81,7 @@ Now your token is in your clipboard.
 
 
 <br>
+
 ## ☣️ Issues
 Yes, the SelfBot can disconnect withouth reason, yes the SelfBot can display random errors: the problem is the current library (selfcord.py).
 <br>
