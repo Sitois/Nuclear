@@ -276,6 +276,11 @@ rpc_url_translate = {
     "en": "Set RPC's streaming URL ``(https://twitch.tv/name)``"
 }
 
+rpc_type_translate = {
+    "fr": "Défini le type de votre RPC (game / watch / listen / stream)",
+    "en": "Set RPC's type (game / watch / listen / stream)"
+}
+
 rpc_id_translate = {
     "fr": "Défini l'ID de l'application pour le RPC",
     "en": "Set RPC's Application ID"

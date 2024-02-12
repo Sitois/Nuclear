@@ -37,7 +37,7 @@ except ImportError:
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
-nuclear_version = "v0.8.1"
+nuclear_version = "v0.9"
 
 print(Fore.LIGHTCYAN_EX + f"""$$\   $$\                     $$\                               
 $$$\  $$ |                    $$ |                              
@@ -301,11 +301,15 @@ sniped_messages = {}
 @bot.on("message_delete")
 async def message_logger(message):
     global sniped_messages
-    sniped_messages[message.channel.id] = {
+    try:
+       sniped_messages[message.channel.id] = {
         'author': message.author,
         'content': message.content,
         'image': message.attachments[0].url if message.attachments else fr_en.empty[config_selfbot.lang]
-    }
+      }
+    except Exception:
+       return
+
 
 @bot.cmd()
 async def snipe(ctx):
@@ -682,6 +686,7 @@ async def presence(ctx):
  `{config_selfbot.prefix}rpc_details`: {fr_en.rpc_details_translate[config_selfbot.lang]}.
  `{config_selfbot.prefix}rpc_state`: {fr_en.rpc_state_translate[config_selfbot.lang]}.
  `{config_selfbot.prefix}rpc_url`: {fr_en.rpc_url_translate[config_selfbot.lang]}.
+ `{config_selfbot.prefix}rpc_type`: {fr_en.rpc_type_translate[config_selfbot.lang]}.
  `{config_selfbot.prefix}rpc_application_id`: {fr_en.rpc_id_translate[config_selfbot.lang]}.
  `{config_selfbot.prefix}rpc_image`: {fr_en.rpc_image_translate[config_selfbot.lang]}. (`{config_selfbot.prefix}tuto` !!!)
  `{config_selfbot.prefix}rpc_button_text_one`: {fr_en.rpc_button_text_one_translate[config_selfbot.lang]}.
@@ -734,12 +739,12 @@ async def tuto(ctx):
 async def use(ctx):
     choice = ctx.message.content.split()[1]
     if choice.lower() == "hi":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Hi !", 
                                                                 details="hi !!!!!!", 
                                                                 state=None,
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1194342119989575832/MGflOC7.jpg?ex=65b93b47&is=65a6c647&hm=af5387b219eb9f9bf4cf7137758c4fad9da45a174305655ccb84c977a38dcd9f&=&format=webp&width=744&height=419",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -748,12 +753,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "omori":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Omori", 
                                                                 details="In Game", 
                                                                 state="Fighting a boss.",
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1177984303456604253/i9ja3eA.gif?ex=65b517df&is=65a2a2df&hm=ba4d90afb6d6f47adceb1dbdc8ae28435c20a0fc46dd52cd3b492b427d356987&=&width=559&height=419",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -762,12 +767,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "cod":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk,
                               activity=selfcord.Activity.Game(name="Call Of Duty: MWIII", 
                                                                 details=f"{fr_en.rpc_cod_details[config_selfbot.lang]}", 
                                                                 state=f"{fr_en.rpc_cod_state[config_selfbot.lang]}",
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1199007140782813284/5rr7SXS.png?ex=65c0f96a&is=65ae846a&hm=f92e8757ce026cb26fc3d6e44e2e9e02ccb2577e9f047e62f9891c0f5925c725&=&format=webp&quality=lossless",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -776,12 +781,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "youtube":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk,
                               activity=selfcord.Activity.Watch(name="Youtube", 
                                                                 details="Watching Videos", 
                                                                 state=None,
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1197991793111863417/ILAO8CE.png?ex=65bd47cd&is=65aad2cd&hm=585fcd20ef938d1a7637732d5d251cba50c82024c980c5b1e785bb486e4c5f4a&=&format=webp&quality=lossless&width=419&height=419",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -790,12 +795,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "car":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"), 
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Watch(name="Drift Car", 
                                                                 details="Watching DriftCar", 
                                                                 state=None,
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198216462536552468/Wy5D92g.gif?ex=65be190a&is=65aba40a&hm=ee3adfbaccfb4a72ef71196d5b675aaef7df29a6f92f6841e4b161ed989aa783&=",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -804,12 +809,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "js":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Visual Studio Code", 
                                                                 details=f"Editing {bot.user.name}.js (273 lines)", 
                                                                 state="Workspace: Nuclear",
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198623222678179960/FYcrOR1.png?ex=65bf93dd&is=65ad1edd&hm=196ea799818a84abed3db5089be49eb2f470fe31e9ed5d984bfb6b898c868a4a&=&format=webp&quality=lossless",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -818,12 +823,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "python":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
-                              activity=selfcord.Activity.Game(name="Visual Studio Code", 
-                                                                details=f"Editing {bot.user.name}.py", 
+                              activity=selfcord.Activity.Game(name="Visual Studio Code",
+                                                                details=f"Editing {bot.user.name}.py",
                                                                 state="Workspace: Nuclear",
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1198617576553599057/3jMZG0a.png?ex=65bf8e9b&is=65ad199b&hm=d61ea94e9db57f790e49dab09a9390bd61e5362a14cd44738a9a2e8aa70092d0&=&format=webp&quality=lossless",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -832,7 +837,7 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "webdeck":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk,
                               activity=selfcord.Activity.Game(name="WebDeck", 
                                                                 details="Watching stars on GitHub...", 
@@ -846,7 +851,7 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "self":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Stream(name="click mee", 
                                                                 details="Nuclear $B", 
@@ -854,19 +859,19 @@ async def use(ctx):
                                                                 buttons={"Nuclear $B": "https://github.com/Sitois/Nuclear", "star it !": "https://github.com/Sitois/Nuclear"},
                                                                 key="mp:attachments/1135264530188992562/1198281648437993553/CIjvBOJ.png?ex=65be55bf&is=65abe0bf&hm=40a3c63ca07dfac28726eadae220a07412551a69deea021b73c24ae00933782e&=&format=webp&quality=lossless",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id"),
-                                                                url=rpc.read_variable_json("streaming_url")
+                                                                url=config_selfbot.streaming_url if rpc.read_variable_json("streaming_url") == "VOID" else rpc.read_variable_json("streaming_url")
                                                                 )
                                                                 )
      msg = await ctx.message.edit(f"🌌 Template \"Nuclear\".")
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "dark":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="☄", 
                                                                 details=None, 
                                                                 state=None,
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1205872002238382111/PNjYcIL.png?ex=65d9f2d1&is=65c77dd1&hm=37a71d4fc6c032214d71c8d94d7d6f6c99f8f9773c467cf8f7cc4d56a618da73&=&format=webp&quality=lossless",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -875,12 +880,12 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "gta":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
                               afk=afk, 
                               activity=selfcord.Activity.Game(name="Grand Theft Auto VI", 
                                                                 details="Welcome to Vice City !", 
                                                                 state="Playing SinglePlayer",
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")},
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
                                                                 key="mp:attachments/1135264530188992562/1200905385230475424/rhqvEdX.png?ex=65c7e14b&is=65b56c4b&hm=b375f98036eb15cedb369aff743ab040585f4777cc3756530e936fd5bbbb98d4&=&format=webp&quality=lossless&width=417&height=419",
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
@@ -889,13 +894,13 @@ async def use(ctx):
      await asyncio.sleep(deltime)
      await msg.delete()
     elif choice.lower() == "reset":
-     await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -932,13 +937,13 @@ async def rpc_details(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_details", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -953,13 +958,13 @@ async def rpc_name(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_name", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -974,13 +979,13 @@ async def rpc_state(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_state", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -990,18 +995,18 @@ async def rpc_state(ctx):
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_url(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("streaming_url", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1011,18 +1016,18 @@ async def rpc_url(ctx):
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_image(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("image_key", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1032,18 +1037,18 @@ async def rpc_image(ctx):
 
 #############
 
-@bot.cmd(description='set rpc title')
+@bot.cmd()
 async def rpc_application_id(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("application_id", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1058,13 +1063,13 @@ async def rpc_button_text_one(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_button_one", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1079,13 +1084,13 @@ async def rpc_button_text_two(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_button_two", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1100,13 +1105,13 @@ async def rpc_button_link_one(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_button_one_answer", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1121,13 +1126,13 @@ async def rpc_button_link_two(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("activity_button_two_answer", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1142,13 +1147,13 @@ async def rpc_status(ctx):
     message_split = ctx.message.content.split()
     message_content = ctx.message.content.replace(f"{message_split[0]} ", "")
     rpc.edit_variable_json("status_activity", message_content)
-    await bot.change_presence(status=rpc.read_variable_json("status_activity"),
-                              afk=afk, 
-                              activity=selfcord.Activity.Game(name=rpc.read_variable_json("activity_name"), 
-                                                                details=rpc.read_variable_json("activity_details"), 
-                                                                state=rpc.read_variable_json("activity_state"),  
-                                                                buttons={rpc.read_variable_json("activity_button_one"): rpc.read_variable_json("activity_button_one_answer"), rpc.read_variable_json("activity_button_two"): rpc.read_variable_json("activity_button_two_answer")}, 
-                                                                key=rpc.read_variable_json("image_key"), 
+    await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
                                                                 application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
                                                                 )
                                                                 )
@@ -1156,7 +1161,72 @@ async def rpc_status(ctx):
     await asyncio.sleep(deltime)
     await msg.delete()
 
+#############
 
+@bot.cmd()
+async def rpc_type(ctx):
+    choice = ctx.message.content.split()[1]
+    if choice.lower() == "game":
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Game(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
+                                                              )
+                              )
+     msg = await ctx.message.edit(f"🎮 **Type:** \"Game\".")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "watch":
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Watch(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
+                                                              )
+                              )
+     msg = await ctx.message.edit(f"📺 **Type:** \"Watch\".")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "listen":
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Listen(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id")
+                                                              )
+                              )
+     msg = await ctx.message.edit(f"🎧 **Type:** \"Listen\".")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    elif choice.lower() == "stream":
+     await bot.change_presence(status=config_selfbot.status_activity if rpc.read_variable_json("status_activity") == "VOID" else rpc.read_variable_json("status_activity"),
+                              afk=afk,
+                              activity=selfcord.Activity.Stream(name=config_selfbot.activity_name if rpc.read_variable_json("activity_name") == "VOID" else rpc.read_variable_json("activity_name"),
+                                                                details=config_selfbot.activity_details if rpc.read_variable_json("activity_details") == "VOID" else rpc.read_variable_json("activity_details"),
+                                                                state=config_selfbot.activity_state if rpc.read_variable_json("activity_state") == "VOID" else rpc.read_variable_json("activity_state"),
+                                                                buttons={config_selfbot.activity_button_one if rpc.read_variable_json("activity_button_one") == "VOID" else rpc.read_variable_json("activity_button_one"): config_selfbot.activity_button_one_answer if rpc.read_variable_json("activity_button_one_answer") == "VOID" else rpc.read_variable_json("activity_button_one_answer"), config_selfbot.activity_button_two if rpc.read_variable_json("activity_button_two") == "VOID" else rpc.read_variable_json("activity_button_two"): config_selfbot.activity_button_two_answer if rpc.read_variable_json("activity_button_two_answer") == "VOID" else rpc.read_variable_json("activity_button_two_answer")},
+                                                                key=config_selfbot.image_key if rpc.read_variable_json("image_key") == "VOID" else rpc.read_variable_json("image_key"), 
+                                                                application_id=config_selfbot.application_id if rpc.read_variable_json("application_id") == "VOID" else rpc.read_variable_json("application_id"),
+                                                                url=config_selfbot.streaming_url if rpc.read_variable_json("streaming_url") == "VOID" else rpc.read_variable_json("streaming_url")
+                                                              )
+                              )
+     msg = await ctx.message.edit(f"⭕ **Type:** \"Stream\".")
+     await asyncio.sleep(deltime)
+     await msg.delete()
+    else:
+     msg = await ctx.message.edit(f"❌ Incorrect. (game / watch / listen / stream)")
+     await asyncio.sleep(deltime)
+     await msg.delete()
 
 ####################
 # flood command    #
@@ -1258,4 +1328,4 @@ try:
 except selfcord.api.errors.LoginFailure:
    print(f"Token Error. Please configure a valid token in config_selfbot.py\n( Error Message: {e} )")
 except Exception as e:
-    print(f"Maybe Config Error. Make sure all information in config_selfbot.py are correct.\n( Error Message: {e} )")
+    print(f"Maybe a Config Error. Make sure all information in config_selfbot.py are correct.\n( Error Message: {e} )")
