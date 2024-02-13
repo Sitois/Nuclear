@@ -100,11 +100,20 @@ Dès que la nouvelle version sort, Nuclear va migrer vers la nouvelle version.
         Lenochxd
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/Shell1010">
+        <img src="https://avatars.githubusercontent.com/u/72198971?s=64&v=4" alt="Shell1010" width="80px" height="80px" style="border-radius: 50%;">
+        <br>
+        Shell1010
+      </a>
+    </td>
 <table>
 
-Un grand merci à elle !
+Un grand merci à Lenoch !
 
 Jettez un oeuil à son [projet](https://github.com/Lenochxd/Webdeck) !
+
+Un grand merci à Shell1010 pour m'avoir aidé durant le développement et pour avoir créer [selfcord.py](https://github.com/OmegaDevStudio/Selfcord) !
 
 # Support
 - Serveur Guilded : [https://guilded.gg/nuclear](https://guilded.gg/nuclear)

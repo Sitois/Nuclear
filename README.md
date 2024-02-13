@@ -102,10 +102,19 @@ As soon as the new rewrite come out, Nuclear will migrate to this version.
         Lenochxd
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/Shell1010">
+        <img src="https://avatars.githubusercontent.com/u/72198971?s=64&v=4" alt="Shell1010" width="80px" height="80px" style="border-radius: 50%;">
+        <br>
+        Shell1010
+      </a>
+    </td>
 <table>
 
-A big thank to her !
+A big thank to Lenoch !
 Check her current [project](https://github.com/Lenochxd/WebDeck) !
+
+And a big thank to Shell1010 for helping me for the developement and for creating [selfcord.py](https://github.com/OmegaDevStudio/Selfcord) !
 
 # Support
 - Guilded server: [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
