@@ -121,8 +121,7 @@ As soon as the new rewrite come out, Nuclear will migrate to this version.
     </td>
 <table>
 
-A big thank to Lenoch !
-Check her current [project](https://github.com/Lenochxd/WebDeck) !
+A big thank to Lenoch ! Check her current [project](https://github.com/Lenochxd/WebDeck) !
 
 And a big thank to Shell1010 for helping me during the developement and for creating [selfcord.py](https://github.com/OmegaDevStudio/Selfcord) !
 

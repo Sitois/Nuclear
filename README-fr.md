@@ -120,9 +120,7 @@ Dès que la nouvelle version sort, Nuclear va migrer vers la nouvelle version.
     </td>
 <table>
 
-Un grand merci à Lenoch !
-
-Jettez un oeuil à son [projet](https://github.com/Lenochxd/Webdeck) !
+Un grand merci à Lenoch ! Jettez un oeuil à son [projet](https://github.com/Lenochxd/Webdeck) !
 
 Un grand merci à Shell1010 pour m'avoir aidé durant le développement et pour avoir créer [selfcord.py](https://github.com/OmegaDevStudio/Selfcord) !
 
