@@ -20,6 +20,16 @@
 ## ⛔ Disclaimer
 **Discord SelfBots are not allowed by Discord TOS and can easily ban your account. Please use for educational purposes only.**
 
+## 📖 Table of content
+1. [💾 Installation](https://github.com/Sitois/Nuclear?tab=readme-ov-file#-installation)
+2. [🔧 Config](https://github.com/Sitois/Nuclear?tab=readme-ov-file#-config)
+3. [🌟 Features](https://github.com/Sitois/Nuclear?tab=readme-ov-file#-features)
+4. [📜 How to get a user token](https://github.com/Sitois/Nuclear?tab=readme-ov-file#-how-to-get-a-token)
+5. [👀 Preview](https://github.com/Sitois/Nuclear?tab=readme-ov-file#-preview)
+6. [☣️ Issues](https://github.com/Sitois/Nuclear?tab=readme-ov-file#%EF%B8%8F-issues)
+7. [⭐ Contributors](https://github.com/Sitois/Nuclear?tab=readme-ov-file#-contributors)
+7. [🫂 Support](https://github.com/Sitois/Nuclear?tab=readme-ov-file#support)
+
 ## 💾 Installation
 
 1. Download the latest version from the [Releases](https://github.com/Sitois/Nuclear/releases) section on GitHub.
@@ -29,7 +39,7 @@
 5. Run the program: `python selfbot.py`
 
 ## 🔧 Config
-Open `config_selfbot.py` with any text editor and make sure to enter a __user__ token.
+Open `config_selfbot.py` with any text editor.
 
 ## 🌟 Features
 * Custom RPC templates,

@@ -19,6 +19,17 @@
 ## ⛔ Avertissement
 **Les SelfBots ne sont pas autorisés par les CGU (ou TOS) de Discord et peuvent facilement entraîner le banissement de votre compte. Veuillez utiliser ce script uniquement à des fins éducatives.**
 
+## 📖 Table des matières
+1. [💾 Installation](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#-installation)
+2. [🔧 Configuration](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#-configuration)
+3. [🌟 Fonctionnalités](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#-fonctionnalit%C3%A9s)
+4. [📜 Comment obtenir son token](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#-comment-obtenir-son-token)
+5. [👀 Aperçu](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#-aper%C3%A7u)
+6. [☣️ Problèmes](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#%EF%B8%8F-probl%C3%A8mes)
+7. [⭐ Contributeurs](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#-contributeurs)
+7. [🫂 Support](https://github.com/Sitois/Nuclear/blob/main/README-fr.md#support)
+
+
 ## 💾 Installation
 
 1. Téléchargez la dernière version depuis la section [Releases](https://github.com/Sitois/Nuclear/releases) sur GitHub.
