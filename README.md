@@ -114,7 +114,7 @@ As soon as the new rewrite come out, Nuclear will migrate to this version.
 A big thank to Lenoch !
 Check her current [project](https://github.com/Lenochxd/WebDeck) !
 
-And a big thank to Shell1010 for helping me for the developement and for creating [selfcord.py](https://github.com/OmegaDevStudio/Selfcord) !
+And a big thank to Shell1010 for helping me during the developement and for creating [selfcord.py](https://github.com/OmegaDevStudio/Selfcord) !
 
 # Support
 - Guilded server: [https://guilded.gg/nuclear](https://guilded.gg/nuclear)
