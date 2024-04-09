@@ -1,6 +1,10 @@
 [![English version](https://img.shields.io/badge/Read%20in-english-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README.md)
 
 
+# NOTES
+PROJET ABNDONNEE .
+Nuclear-V2: [https://github.com/Sitois/Nuclear-V2](https://github.com/Sitois/Nuclear-V2)
+
 # 🌌 Nuclear
 ### Un puissant SelfBot Discord écrit en Python utilisant [selfcord.py](https://github.com/OmegaDevStudio/Selfcord)! ###
 

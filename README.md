@@ -1,6 +1,8 @@
 [![Version française](https://img.shields.io/badge/Lire%20en-Fran%C3%A7ais-blue?style=for-the-badge&logo=appveyor)](https://github.com/Sitois/Nuclear/blob/main/README-fr.md)
 
-
+# NOTES
+CURRETNLY DEAD PROJECT.
+Nuclear-V2: [https://github.com/Sitois/Nuclear-V2](https://github.com/Sitois/Nuclear-V2)
 
 # 🌌 Nuclear
 ### A powerful Discord SelfBot written in Python using [selfcord.py](https://github.com/OmegaDevStudio/Selfcord)!
