@@ -3,6 +3,7 @@
 
 # NOTES
 PROJET ABNDONNEE .
+(parceke selfcord;py a ap d'auto reconnect et c chant et aussi pck discord.py-self et meilleur bref vient dans la v2 stp)
 Nuclear-V2: [https://github.com/Sitois/Nuclear-V2](https://github.com/Sitois/Nuclear-V2)
 
 

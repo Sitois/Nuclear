@@ -2,6 +2,7 @@
 
 # NOTES
 CURRETNLY DEAD PROJECT.
+(because selfcord.py don't have auto reconnect and it's annoying. Nulcear-V2 use discord.py-self :))
 Nuclear-V2: [https://github.com/Sitois/Nuclear-V2](https://github.com/Sitois/Nuclear-V2)
 
 ---
